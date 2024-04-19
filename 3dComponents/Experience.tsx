@@ -5,9 +5,9 @@ import Cube from './Cube'
 import Plane from './Plane'
 import Sphere from './Sphere'
 const Experience = () => {
-    const box = useRef<Mesh>(null!)
+    const cubeRef = useRef<Mesh>(null!)
     useEffect(() => {
-        // console.log(box.current);
+        console.log(cubeRef.current);
 
 
         return () => {
@@ -16,14 +16,14 @@ const Experience = () => {
     }, [])
 
     useFrame((state, delta) => {
-        // box.current.rotation.y += delta
+        cubeRef.current.rotation.y += delta
 
 
     })
     return (
         <>
             <Plane />
-            <Cube />
+            <Cube ref={cubeRef} />
             <Sphere />
 
         </>

@@ -1,4 +1,4 @@
-function Sphere() {
+const Sphere = () => {
     return (
         <mesh position={[-2, 0, 0]}>
             <sphereGeometry args={[1, 32, 32]} />
@@ -7,4 +7,5 @@ function Sphere() {
         </mesh>
     )
 }
+
 export default Sphere
