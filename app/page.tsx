@@ -1,5 +1,9 @@
+import World from "@/3dComponents/World";
+
 export default function Home() {
   return (
-    <h1>hi</h1>
+    <>
+      <World />
+    </>
   );
 }
