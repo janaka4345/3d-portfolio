@@ -1,18 +1,11 @@
-import { useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useRef } from 'react'
-import { type Mesh } from 'three'
-import Cube from './Cube'
+import { useFrame } from '@react-three/fiber'
+import { useEffect } from 'react'
 import Plane from './Plane'
-import Sphere from './Sphere'
-import Player from './Player'
+import PlayerAvatar from './PlayerAvatar'
+import { RigidBody } from '@react-three/rapier'
 const Experience = () => {
-    const cubeRef = useRef<Mesh>(null!)
-    const three = useThree()
+
     useEffect(() => {
-        // console.log(cubeRef.current);
-        // console.log({ three });
-
-
 
         return () => {
 
@@ -20,14 +13,15 @@ const Experience = () => {
     }, [])
 
     useFrame((state, delta) => {
-        cubeRef.current.rotation.y += delta
+        // cubeRef.current.rotation.y += delta
     })
     return (
         <>
-            <Plane />
-            <Cube ref={cubeRef} />
-            <Sphere />
-            <Player />
+            <RigidBody><Plane /></RigidBody>
+            {/* <RigidBody> <Cube ref={cubeRef} /></RigidBody> */}
+            {/* <RigidBody><Sphere /> </RigidBody> */}
+            <RigidBody><PlayerAvatar /></RigidBody>
+
 
         </>
     )
