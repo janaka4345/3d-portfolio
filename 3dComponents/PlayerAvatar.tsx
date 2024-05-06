@@ -1,8 +1,9 @@
-import { useGLTF } from "@react-three/drei";
+import { useAnimations, useGLTF } from "@react-three/drei";
 import { useEffect, useLayoutEffect } from "react";
 const PlayerAvatar = () => {
     const playerAvatar = useGLTF('./MyAvatar01.glb')
-    // const animations = useAnimations(playerAvatar.animations, playerAvatar.scene)
+    const animation = useGLTF('./idle.glb')
+    const animations = useAnimations(animation.animations, playerAvatar.scene)
     useLayoutEffect(() => {
         playerAvatar.scene.traverse((child) => {
             if (child.isObject3D) {
@@ -13,17 +14,17 @@ const PlayerAvatar = () => {
 
 
     useEffect(() => {
-        // console.log(animations);
+        console.log(animation);
         // playerAvatar.scene.traverse((object) => {
         //     if (object.isObject3D) {
         //         object.castShadow
         //     }
         // })
 
-        // console.log(animations.actions?.['Run']);
+        // console.log(animations.actions?.["F_Standing_Idle_Variations_007"]);
 
-        // const anima = animations.actions?.['Run']
-        // anima?.play()
+        const anima = animations.actions?.["F_Standing_Idle_Variations_007"]
+        anima?.play()
         // setTimeout(() => {
         //   const anima = animations.actions?.['Walk']
         //   anima?.play()
