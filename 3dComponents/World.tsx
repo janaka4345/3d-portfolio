@@ -4,13 +4,16 @@ import Experience from "./Experience"
 import { CameraControls, Environment, } from "@react-three/drei"
 import { Perf } from 'r3f-perf'
 import { Physics } from "@react-three/rapier"
-import { StrictMode, useEffect, useRef } from "react"
-import { useControls } from 'leva'
+import { StrictMode, useEffect, useRef, useState } from "react"
+import { usePageStore } from "@/store/pageStore"
+
 
 const World = () => {
     const cameraControlsRef = useRef<CameraControls>(null)
-    useEffect(() => {
+    const page = usePageStore((state) => state.page)
 
+    useEffect(() => {
+        cameraControlsRef.current?.reset()
         return () => {
 
         }
@@ -19,35 +22,50 @@ const World = () => {
 
     return (
         // <StrictMode>//TODO
-        <Canvas shadows style={{ width: '100svw', height: '100svh' }}
-            camera={{ fov: 50, near: 0.1, far: 20, position: [0, 0.8, 2.1] }}
-        >
+        <>
+            <Canvas shadows style={{ width: '100svw', height: '100svh' }}
+                camera={{ fov: 50, near: 0.1, far: 20, position: [0, 0.8, 2.1] }}
+            >
+                <CameraControls
+                    makeDefault
+                    // minDistance={2}
+                    // maxDistance={2.5}
+                    // minZoom={1}
+                    // maxZoom={2}
+                    // minPolarAngle={1.1}
+                    // maxPolarAngle={1.2}
+                    // minAzimuthAngle={0}
+                    // maxAzimuthAngle={0.3}
+                    enabled={!(page === 'home')}
 
-            <CameraControls
-                ref={cameraControlsRef}
-                makeDefault
-                minDistance={2}
-                maxDistance={2.5}
-                minZoom={1}
-                maxZoom={2}
-                minPolarAngle={1.1}
-                maxPolarAngle={1.2}
-                minAzimuthAngle={0}
-                maxAzimuthAngle={0.3}
-                enabled={true}
+                />
+                <CameraControls
+                    ref={cameraControlsRef}
+                    makeDefault
+                    minDistance={2}
+                    maxDistance={2.5}
+                    minZoom={1}
+                    maxZoom={2}
+                    minPolarAngle={1.1}
+                    maxPolarAngle={1.2}
+                    minAzimuthAngle={0}
+                    maxAzimuthAngle={0.3}
+                    enabled={page === 'home'}
 
-            />
-            <Physics >
-                {/* <Perf position="top-left" /> //TODO*/}
-                {/* <OrbitControls /> //TODO */}
-                {/* <directionalLight intensity={2} castShadow position={[2, 2, 2]} /> */}
-                <Environment preset="apartment" background />
-                <ambientLight />
-                <Experience />
+                />
+
+                <Physics >
+                    {/* <Perf position="top-left" /> //TODO*/}
+                    {/* <OrbitControls /> //TODO */}
+                    {/* <directionalLight intensity={2} castShadow position={[2, 2, 2]} /> */}
+                    <Environment preset="apartment" background />
+                    <ambientLight />
+                    <Experience />
 
 
-            </Physics>
-        </Canvas>
+                </Physics>
+            </Canvas>
+        </>
         // </StrictMode>
     )
 }
