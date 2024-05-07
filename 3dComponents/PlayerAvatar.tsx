@@ -1,6 +1,5 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { MeshProps } from "@react-three/fiber";
-import { useControls } from "leva";
 import { Ref, forwardRef, useEffect, useLayoutEffect } from "react";
 import { type BufferGeometry, type Material, type Mesh, type NormalBufferAttributes, type Object3DEventMap } from "three";
 const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>) => {
