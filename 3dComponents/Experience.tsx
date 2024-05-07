@@ -1,37 +1,37 @@
 import { useFrame } from '@react-three/fiber'
+import { RigidBody, type RapierRigidBody } from '@react-three/rapier'
 import { useEffect, useRef } from 'react'
-import Plane from './Plane'
 import PlayerAvatar from './PlayerAvatar'
-import { type RapierRigidBody, RigidBody } from '@react-three/rapier'
-import { useControls } from 'leva'
 import { Mesh, Vector3 } from 'three'
+import { usePageStore } from '@/store/pageStore'
+import Plane from './Plane'
 const Experience = () => {
+
     const playerRigidBody = useRef<RapierRigidBody>(null)
+    const planeRigidBody = useRef<RapierRigidBody>(null)
     const playerMeshRef = useRef<Mesh>(null)
 
+    const page = usePageStore((state) => state.page)
 
     useEffect(() => {
-        console.log(playerRigidBody);
         playerRigidBody.current?.setEnabled(false)
-
         return () => {
 
         }
     }, [])
 
     useFrame((state) => {
+        page === 'home' && playerMeshRef.current?.setRotationFromAxisAngle(new Vector3(0, 1, 0), (state?.controls?.azimuthAngle * 1.5 - 0.5))
 
-        playerMeshRef.current?.setRotationFromAxisAngle(new Vector3(0, 1, 0), (state?.controls?.azimuthAngle * 2 - 0.5))
     })
     return (
         <>
-            {/* <RigidBody><Plane /></RigidBody> */}
+
+            {/* {<RigidBody  position={[0, -5, 0]}><Plane /></RigidBody>} */}
+            {/* {<RigidBody position={[0, -5, 0]}><Plane /></RigidBody>} */}
             {/* <RigidBody> <Cube ref={cubeRef} /></RigidBody> */}
             {/* <RigidBody><Sphere /> </RigidBody> */}
-            {/* <mesh>
-                <planeGeometry args={[2, 2]} />
-                <meshStandardMaterial color={'red'} />
-            </mesh> */}
+
             <RigidBody ref={playerRigidBody} position={[0.4, 0, 1]}>
                 <PlayerAvatar ref={playerMeshRef} position={[0, -0.99, 0]} />
             </RigidBody>
