@@ -1,9 +1,13 @@
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { useEffect, useLayoutEffect } from "react";
-const PlayerAvatar = () => {
+import { MeshProps } from "@react-three/fiber";
+import { useControls } from "leva";
+import { Ref, forwardRef, useEffect, useLayoutEffect } from "react";
+import { type BufferGeometry, type Material, type Mesh, type NormalBufferAttributes, type Object3DEventMap } from "three";
+const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>) => {
     const playerAvatar = useGLTF('./MyAvatar01.glb')
     const animation = useGLTF('./idle.glb')
     const animations = useAnimations(animation.animations, playerAvatar.scene)
+
     useLayoutEffect(() => {
         playerAvatar.scene.traverse((child) => {
             if (child.isObject3D) {
@@ -35,10 +39,10 @@ const PlayerAvatar = () => {
 
 
     return (
-        <>
-            <primitive object={playerAvatar.scene} position={[0, -0.99, 0]} />
-        </>
+        <mesh ref={playerRef}>
+            <primitive object={playerAvatar.scene}  {...props} />
+        </mesh>
     )
 }
-
+const PlayerAvatar = forwardRef(playerModel)
 export default PlayerAvatar;
