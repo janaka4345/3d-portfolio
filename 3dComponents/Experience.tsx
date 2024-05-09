@@ -1,39 +1,53 @@
+import { useStateEngine } from '@/store/statEngine'
 import { useFrame } from '@react-three/fiber'
-import { RigidBody, type RapierRigidBody } from '@react-three/rapier'
+import { CapsuleCollider, RigidBody, type RapierRigidBody } from '@react-three/rapier'
 import { useEffect, useRef } from 'react'
-import PlayerAvatar from './PlayerAvatar'
 import { Mesh, Vector3 } from 'three'
-import { usePageStore } from '@/store/pageStore'
 import Plane from './Plane'
+import PlayerAvatar from './PlayerAvatar'
+import useCharacterController from './useCharacterController'
 const Experience = () => {
 
-    const playerRigidBody = useRef<RapierRigidBody>(null)
+    const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     const planeRigidBody = useRef<RapierRigidBody>(null)
     const playerMeshRef = useRef<Mesh>(null)
 
-    const page = usePageStore((state) => state.page)
+    const page = useStateEngine((state) => state.page)
 
     useEffect(() => {
-        playerRigidBody.current?.setEnabled(false)
+        characterRigidbodyRef.current?.setEnabled(false)
         return () => {
 
         }
     }, [])
 
-    useFrame((state) => {
-        page === 'home' && playerMeshRef.current?.setRotationFromAxisAngle(new Vector3(0, 1, 0), (state?.controls?.azimuthAngle * 1.5 - 0.5))
+    useFrame((state, delta) => {
+        if (!characterRigidbodyRef.current?.isEnabled() && page === 'skills') {
+            characterRigidbodyRef.current?.setEnabled(true)
+        }
+        if (page === 'home') {
+            page === 'home' && playerMeshRef.current?.setRotationFromAxisAngle(new Vector3(0, 1, 0), (state?.controls?.azimuthAngle * 1.5 - 0.5))
+
+        }
+        if (page === 'skills' && characterRigidbodyRef.current) {
+
+            const t = useCharacterController({ state, delta, characterRigidbodyRef, playerMeshRef })
+
+            // state.camera.position.copy(new Vector3(characterRigidbodyRef.current?.translation().x - 2, characterRigidbodyRef.current?.translation().y + 1, characterRigidbodyRef.current?.translation().z + 2))
+        }
 
     })
     return (
         <>
 
-            {/* {<RigidBody  position={[0, -5, 0]}><Plane /></RigidBody>} */}
+            {<RigidBody type='fixed' position={[0, -5, 0]}><Plane /></RigidBody>}
             {/* {<RigidBody position={[0, -5, 0]}><Plane /></RigidBody>} */}
             {/* <RigidBody> <Cube ref={cubeRef} /></RigidBody> */}
             {/* <RigidBody><Sphere /> </RigidBody> */}
 
-            <RigidBody ref={playerRigidBody} position={[0.4, 0, 1]}>
+            <RigidBody type='dynamic' ref={characterRigidbodyRef} position={[0.4, 0, 1]} colliders={false} lockRotations>
                 <PlayerAvatar ref={playerMeshRef} position={[0, -0.99, 0]} />
+                <CapsuleCollider args={[0.5, 0.5]} />
             </RigidBody>
 
 
