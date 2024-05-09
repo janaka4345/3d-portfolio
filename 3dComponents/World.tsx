@@ -6,11 +6,13 @@ import { Perf } from 'r3f-perf'
 import { Physics } from "@react-three/rapier"
 import { StrictMode, useEffect, useRef, useState } from "react"
 import { usePageStore } from "@/store/pageStore"
+import { useStateEngine } from "@/store/statEngine"
 
 
 const World = () => {
     const cameraControlsRef = useRef<CameraControls>(null)
-    const page = usePageStore((state) => state.page)
+    const page = useStateEngine((state) => state.page)
+    const isPageHome = (page === 'home')
 
     useEffect(() => {
         cameraControlsRef.current?.reset()
@@ -26,7 +28,7 @@ const World = () => {
             <Canvas shadows style={{ width: '100svw', height: '100svh' }}
                 camera={{ fov: 50, near: 0.1, far: 20, position: [0, 0.8, 2.1] }}
             >
-                <CameraControls
+                {/* <CameraControls
                     makeDefault
                     // minDistance={2}
                     // maxDistance={2.5}
@@ -38,23 +40,23 @@ const World = () => {
                     // maxAzimuthAngle={0.3}
                     enabled={!(page === 'home')}
 
-                />
+                /> */}
                 <CameraControls
                     ref={cameraControlsRef}
                     makeDefault
-                    minDistance={2}
-                    maxDistance={2.5}
+                    minDistance={isPageHome ? 2 : Number.EPSILON}
+                    maxDistance={isPageHome ? 2.5 : Infinity}
                     minZoom={1}
                     maxZoom={2}
-                    minPolarAngle={1.1}
-                    maxPolarAngle={1.2}
-                    minAzimuthAngle={0}
-                    maxAzimuthAngle={0.3}
-                    enabled={page === 'home'}
+                    minPolarAngle={isPageHome ? 1.1 : 0}
+                    maxPolarAngle={isPageHome ? 1.2 : Math.PI}
+                    minAzimuthAngle={isPageHome ? 0 : -Infinity}
+                    maxAzimuthAngle={isPageHome ? 0.3 : Infinity}
+                // enabled={page === 'home'}
 
                 />
 
-                <Physics >
+                <Physics debug>
                     {/* <Perf position="top-left" /> //TODO*/}
                     {/* <OrbitControls /> //TODO */}
                     {/* <directionalLight intensity={2} castShadow position={[2, 2, 2]} /> */}

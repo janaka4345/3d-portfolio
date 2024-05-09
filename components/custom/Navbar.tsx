@@ -1,11 +1,11 @@
 'use client'
-import { usePageStore } from "@/store/pageStore"
+import { useStateEngine } from "@/store/statEngine"
 import { Button } from "../ui/button"
 
 export const Navbar = () => {
 
 
-    const setPage = usePageStore((state) => state.setPage)
+    const setPage = useStateEngine((state) => state.setPage)
 
 
     return (
