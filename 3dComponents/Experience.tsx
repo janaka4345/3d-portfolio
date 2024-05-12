@@ -36,16 +36,16 @@ const Experience = () => {
             page === 'home' && playerMeshRef.current?.setRotationFromAxisAngle(new Vector3(0, 1, 0), (state?.controls?.azimuthAngle * 1.5 - 0.5))
 
         }
-        // if (page != 'home') {
-        //     setActiveAction({
-        //         forward: getKeys().forward,
-        //         back: getKeys().back,
-        //         left: getKeys().left,
-        //         right: getKeys().right,
-        //         jump: getKeys().jump,
-        //     })//TODO typescript error fix
+        if (page != 'home') {
+            setActiveAction({
+                forward: getKeys().forward,
+                back: getKeys().back,
+                left: getKeys().left,
+                right: getKeys().right,
+                jump: getKeys().jump,
+            })//TODO typescript error fix
 
-        // }
+        }
         if (page === 'skills' && characterRigidbodyRef.current) {
 
 
