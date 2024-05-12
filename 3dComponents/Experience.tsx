@@ -5,12 +5,14 @@ import { useEffect, useRef } from 'react'
 import { Mesh, Vector3 } from 'three'
 import Plane from './Plane'
 import PlayerAvatar from './PlayerAvatar'
-import useCharacterController from './useCharacterController'
+import characterController from './characterController'
+import { useKeyboardControls } from '@react-three/drei'
 const Experience = () => {
 
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     const planeRigidBody = useRef<RapierRigidBody>(null)
     const playerMeshRef = useRef<Mesh>(null)
+    const [_, getKeys] = useKeyboardControls()
 
     const page = useStateEngine((state) => state.page)
 
@@ -31,7 +33,8 @@ const Experience = () => {
         }
         if (page === 'skills' && characterRigidbodyRef.current) {
 
-            const t = useCharacterController({ state, delta, characterRigidbodyRef, playerMeshRef })
+
+            characterController({ state, delta, characterRigidbodyRef, playerMeshRef, getKeys })
 
             // state.camera.position.copy(new Vector3(characterRigidbodyRef.current?.translation().x - 2, characterRigidbodyRef.current?.translation().y + 1, characterRigidbodyRef.current?.translation().z + 2))
         }
