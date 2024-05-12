@@ -10,7 +10,7 @@ const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<Normal
     const animations = useAnimations(animation.animations, playerAvatar.scene)
     const page = useStateEngine((state) => state.page)
     const isPageSkills = (page === 'skills')
-    console.log(animation);
+    // console.log(animation);
 
     useLayoutEffect(() => {
         playerAvatar.scene.traverse((child) => {
@@ -22,7 +22,7 @@ const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<Normal
 
 
     useEffect(() => {
-        console.log(animations);
+        // console.log(animations);
         // playerAvatar.scene.traverse((object) => {
         //     if (object.isObject3D) {
         //         object.castShadow
