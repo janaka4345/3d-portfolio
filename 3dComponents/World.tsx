@@ -5,8 +5,8 @@ import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry, }
 import { Perf } from 'r3f-perf'
 import { Physics } from "@react-three/rapier"
 import { StrictMode, useEffect, useMemo, useRef, useState } from "react"
-import { usePageStore } from "@/store/pageStore"
 import { useStateEngine } from "@/store/statEngine"
+import TouchInput from "@/components/custom/TouchInput"
 
 
 const World = () => {
@@ -28,9 +28,10 @@ const World = () => {
 
     const cameraControlsRef = useRef<CameraControls>(null)
     const page = useStateEngine((state) => state.page)
-    const isPageHome = (page === 'home')
 
     useEffect(() => {
+
+
         cameraControlsRef.current?.reset()
         return () => {
 
@@ -41,44 +42,46 @@ const World = () => {
     return (
         // <StrictMode>//TODO
         <>
+            {page != 'home' && <TouchInput />}
             <KeyboardControls map={map}>
 
                 <Canvas shadows style={{ width: '100svw', height: '100svh' }}
                     camera={{ fov: 50, near: 0.1, far: 20, position: [0, 0.8, 2.1] }}
                 >
-                    {/* <CameraControls
-                    makeDefault
-                    // minDistance={2}
-                    // maxDistance={2.5}
-                    // minZoom={1}
-                    // maxZoom={2}
-                    // minPolarAngle={1.1}
-                    // maxPolarAngle={1.2}
-                    // minAzimuthAngle={0}
-                    // maxAzimuthAngle={0.3}
-                    enabled={!(page === 'home')}
 
-                /> */}
                     <CameraControls
                         ref={cameraControlsRef}
                         makeDefault
-                        minDistance={isPageHome ? 2 : Number.EPSILON}
-                        maxDistance={isPageHome ? 2.5 : Infinity}
+                        minDistance={2}
+                        maxDistance={2.5}
                         minZoom={1}
                         maxZoom={2}
-                        minPolarAngle={isPageHome ? 1.1 : 0}
-                        maxPolarAngle={isPageHome ? 1.2 : Math.PI}
-                        minAzimuthAngle={isPageHome ? 0 : -Infinity}
-                        maxAzimuthAngle={isPageHome ? 0.3 : Infinity}
-                    // enabled={page === 'home'}
+                        minPolarAngle={1.1}
+                        maxPolarAngle={1.2}
+                        minAzimuthAngle={0}
+                        maxAzimuthAngle={0.3}
+                        mouseButtons={
+                            {
+                                left: 1,
+                                wheel: 16,
+                                middle: 0,
+                                right: 0
+                            }
+                        }
+                        touches={{
+                            one: 32,
+                            two: 512,
+                            three: 0
+                        }}
+                        enabled={page === 'home'}
 
                     />
 
                     <Physics debug>
                         {/* <Perf position="top-left" /> //TODO*/}
                         {/* <OrbitControls /> //TODO */}
-                        {/* <directionalLight intensity={2} castShadow position={[2, 2, 2]} /> */}
-                        <Environment preset="apartment" background />
+                        <directionalLight intensity={2} castShadow position={[2, 2, 2]} />
+                        {/* <Environment preset="apartment"  /> */}
                         <ambientLight />
                         <Experience />
 

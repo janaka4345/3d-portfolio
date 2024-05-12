@@ -1,8 +1,8 @@
+import { useCharacterAction } from "@/store/characterActionStore"
 import { RootState } from "@react-three/fiber"
 import { type RapierRigidBody } from "@react-three/rapier"
 import { MutableRefObject, RefObject } from "react"
 import { AnimationAction, Camera, Mesh, Quaternion, Vector3 } from "three"
-import { StoreApi } from "zustand"
 
 type Animations = {
     [name: string]: {
@@ -13,23 +13,8 @@ let playerMesh: MutableRefObject<Mesh>
 let characterRigidbody: MutableRefObject<RapierRigidBody>
 console.log("ran")
 
-const activeAnimation: {
-    forward: boolean
-    back: boolean
-    jump: boolean
-    left: boolean
-    right: boolean
-    run: boolean
-    dance: boolean
-} = {
-    forward: false,
-    back: false,
-    left: false,
-    right: false,
-    jump: false,
-    run: false,
-    dance: false,
-}
+let activeAnimation = useCharacterAction.getState()
+
 const currentPosition = new Vector3()
 const currentLookAt = new Vector3()
 const deceleration = new Vector3(-0.0005, -0.0001, -5.0)
@@ -169,25 +154,19 @@ export default function characterController({
     characterRigidbodyRef,
     playerMeshRef,
     delta,
-    getKeys,
 }: {
     state: RootState
     delta: number
     characterRigidbodyRef: MutableRefObject<RapierRigidBody>
     playerMeshRef: MutableRefObject<Mesh>
-    getKeys: StoreApi<T>["getState"] //TODO type error
 }) {
     // prevAction = currAction;    //UNDO
     // console.log(state);
     // let [x, y, z] = [0, 0, 0]
     characterRigidbody = characterRigidbodyRef
     playerMesh = playerMeshRef
+    activeAnimation = useCharacterAction.getState()
 
-    activeAnimation.jump = getKeys().jump
-    activeAnimation.forward = getKeys().forward
-    activeAnimation.back = getKeys().back
-    activeAnimation.left = getKeys().left
-    activeAnimation.right = getKeys().right
     console.log(activeAnimation)
 
     characterState({ delta, camera: state.camera })
