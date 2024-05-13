@@ -8,6 +8,7 @@ import PlayerAvatar from './PlayerAvatar'
 import characterController from './characterController'
 import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
 import { State, useCharacterAction } from '@/store/characterActionStore'
+import { isMobile } from 'react-device-detect';
 const Experience = () => {
 
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
@@ -20,6 +21,8 @@ const Experience = () => {
     const action = useCharacterAction()
 
     useEffect(() => {
+        console.log('experience ran');
+
         characterRigidbodyRef.current?.setEnabled(false)
         return () => {
 
@@ -36,14 +39,14 @@ const Experience = () => {
             page === 'home' && playerMeshRef.current?.setRotationFromAxisAngle(new Vector3(0, 1, 0), (state?.controls?.azimuthAngle * 1.5 - 0.5))
 
         }
-        if (page != 'home') {
-            setActiveAction({
-                forward: getKeys().forward,
-                back: getKeys().back,
-                left: getKeys().left,
-                right: getKeys().right,
-                jump: getKeys().jump,
-            })//TODO typescript error fix
+        if (page != 'home' && !isMobile) {
+            // setActiveAction({
+            //     forward: getKeys().forward,
+            //     back: getKeys().back,
+            //     left: getKeys().left,
+            //     right: getKeys().right,
+            //     jump: getKeys().jump,
+            // })//TODO typescript error fix
 
         }
         if (page === 'skills' && characterRigidbodyRef.current) {
