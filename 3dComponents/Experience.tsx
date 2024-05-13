@@ -6,8 +6,8 @@ import { type Mesh, Vector3 } from 'three'
 import Plane from './Plane'
 import PlayerAvatar from './PlayerAvatar'
 import characterController from './characterController'
-import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
-import { State, useCharacterAction } from '@/store/characterActionStore'
+import { useKeyboardControls } from '@react-three/drei'
+import { useCharacterAction } from '@/store/characterActionStore'
 import { isMobile } from 'react-device-detect';
 const Experience = () => {
 
@@ -18,16 +18,16 @@ const Experience = () => {
 
     const page = useStateEngine((state) => state.page)
     const setActiveAction = useCharacterAction((state) => state.setAction)
-    const action = useCharacterAction()
+    // const action = useCharacterAction()
 
     useEffect(() => {
         console.log('experience ran');
-
         characterRigidbodyRef.current?.setEnabled(false)
+        characterRigidbodyRef.current?.setTranslation(new Vector3(0.4, 0, 1), true)
         return () => {
 
         }
-    }, [])
+    }, [page])
 
     useFrame((state, delta) => {
         // console.log('action', action);
@@ -40,13 +40,13 @@ const Experience = () => {
 
         }
         if (page != 'home' && !isMobile) {
-            // setActiveAction({
-            //     forward: getKeys().forward,
-            //     back: getKeys().back,
-            //     left: getKeys().left,
-            //     right: getKeys().right,
-            //     jump: getKeys().jump,
-            // })//TODO typescript error fix
+            setActiveAction({
+                forward: getKeys().forward,
+                back: getKeys().back,
+                left: getKeys().left,
+                right: getKeys().right,
+                jump: getKeys().jump,
+            })//TODO typescript error fix
 
         }
         if (page === 'skills' && characterRigidbodyRef.current) {
@@ -61,7 +61,7 @@ const Experience = () => {
     return (
         <>
 
-            {<RigidBody type='fixed' position={[0, -5, 0]}><Plane /></RigidBody>}
+            {page === 'skills' && <RigidBody type='fixed' position={[0, -5, 0]}><Plane /></RigidBody>}
             {/* {<RigidBody position={[0, -5, 0]}><Plane /></RigidBody>} */}
             {/* <RigidBody> <Cube ref={cubeRef} /></RigidBody> */}
             {/* <RigidBody><Sphere /> </RigidBody> */}

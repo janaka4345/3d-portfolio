@@ -1,15 +1,15 @@
 import { useStateEngine } from "@/store/statEngine";
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { MeshProps, useFrame } from "@react-three/fiber";
-import { stat } from "fs";
+import { MeshProps } from "@react-three/fiber";
+
 import { Ref, forwardRef, useEffect, useLayoutEffect } from "react";
-import { Vector3, type BufferGeometry, type Material, type Mesh, type NormalBufferAttributes, type Object3DEventMap } from "three";
+import { type BufferGeometry, type Material, type Mesh, type NormalBufferAttributes, type Object3DEventMap } from "three";
 const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>) => {
-    const playerAvatar = useGLTF('./myAvatar2v1.glb')
+    // const playerAvatar = useGLTF('./myAvatar2v1.glb')
+    const playerAvatar = useGLTF('./characterCompresed.glb')
     const animation = useGLTF('./F_Standing_Idle_Variations_003.glb')
     const animations = useAnimations(animation.animations, playerAvatar.scene)
     const page = useStateEngine((state) => state.page)
-    const isPageSkills = (page === 'skills')
     // console.log(animation);
 
     useLayoutEffect(() => {
