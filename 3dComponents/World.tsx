@@ -4,7 +4,7 @@ import Experience from "./Experience"
 import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry, } from "@react-three/drei"
 import { Perf } from 'r3f-perf'
 import { Physics } from "@react-three/rapier"
-import { StrictMode, useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { useStateEngine } from "@/store/statEngine"
 import TouchInput from "@/components/custom/TouchInput"
 
@@ -30,8 +30,6 @@ const World = () => {
     const page = useStateEngine((state) => state.page)
 
     useEffect(() => {
-
-
         cameraControlsRef.current?.reset()
         return () => {
 
@@ -45,13 +43,14 @@ const World = () => {
             {page != 'home' && <TouchInput />}
             <KeyboardControls map={map}>
 
-                <Canvas shadows style={{ width: '100svw', height: '100svh' }}
+                <Canvas style={{ width: '100svw', height: '100svh' }}
                     camera={{ fov: 50, near: 0.1, far: 20, position: [0, 0.8, 2.1] }}
                 >
 
                     <CameraControls
                         ref={cameraControlsRef}
                         makeDefault
+
                         minDistance={2}
                         maxDistance={2.5}
                         minZoom={1}
@@ -74,15 +73,14 @@ const World = () => {
                             three: 0
                         }}
                         enabled={page === 'home'}
-
                     />
 
-                    <Physics debug>
-                        {/* <Perf position="top-left" /> //TODO*/}
+                    <Physics >
+                        <Perf position="top-right" />
                         {/* <OrbitControls /> //TODO */}
-                        <directionalLight intensity={2} castShadow position={[2, 2, 2]} />
-                        {/* <Environment preset="apartment"  /> */}
-                        <ambientLight />
+                        {/* <directionalLight intensity={2} position={[2, 2, 2]} /> */}
+                        <Environment preset="apartment" background={page === 'home'} />
+                        {/* <ambientLight /> */}
                         <Experience />
 
 
