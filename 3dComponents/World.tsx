@@ -1,12 +1,14 @@
 'use client'
 import { Canvas } from "@react-three/fiber"
 import Experience from "./Experience"
-import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry, } from "@react-three/drei"
+import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry, OrbitControls, } from "@react-three/drei"
 import { Perf } from 'r3f-perf'
 import { Physics } from "@react-three/rapier"
 import { useEffect, useMemo, useRef } from "react"
 import { useStateEngine } from "@/store/statEngine"
 import TouchInput from "@/components/custom/TouchInput"
+import { isMobile } from "react-device-detect"
+
 
 
 const World = () => {
@@ -40,7 +42,7 @@ const World = () => {
     return (
         // <StrictMode>//TODO
         <>
-            {page != 'home' && <TouchInput />}
+            {(page != 'home' && isMobile) && <TouchInput />}
             <KeyboardControls map={map}>
 
                 <Canvas style={{ width: '100svw', height: '100svh' }}
@@ -50,7 +52,6 @@ const World = () => {
                     <CameraControls
                         ref={cameraControlsRef}
                         makeDefault
-
                         minDistance={2}
                         maxDistance={2.5}
                         minZoom={1}
@@ -75,12 +76,9 @@ const World = () => {
                         enabled={page === 'home'}
                     />
 
-                    <Physics >
+                    <Physics debug >
                         <Perf position="top-right" />
-                        {/* <OrbitControls /> //TODO */}
-                        {/* <directionalLight intensity={2} position={[2, 2, 2]} /> */}
                         <Environment preset="apartment" background={page === 'home'} />
-                        {/* <ambientLight /> */}
                         <Experience />
 
 

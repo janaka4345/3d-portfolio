@@ -6,7 +6,7 @@ const TouchInput = () => {
     const setAction = useCharacterAction((state) => state.setAction)
     const handleTouchDown = (e: TouchEvent, action: string) => {
         // e.stopPropagation()
-        console.log(e);
+        // console.log(e);
 
         e.preventDefault();
         switch (action) {
