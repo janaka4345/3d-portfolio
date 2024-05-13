@@ -167,7 +167,7 @@ export default function characterController({
     playerMesh = playerMeshRef
     activeAnimation = useCharacterAction.getState()
 
-    console.log(activeAnimation)
+    // console.log(activeAnimation)
 
     characterState({ delta, camera: state.camera })
     const idealLookat = calculateIdealLookat()
