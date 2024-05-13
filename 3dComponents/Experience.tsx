@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react'
 import { type Mesh, Vector3 } from 'three'
 import Plane from './Plane'
 import PlayerAvatar from './PlayerAvatar'
+// import PlayerAvatar from './PlayerAvatar2'
 import characterController from './characterController'
 import { useKeyboardControls } from '@react-three/drei'
 import { useCharacterAction } from '@/store/characterActionStore'
@@ -12,7 +13,6 @@ import { isMobile } from 'react-device-detect';
 const Experience = () => {
 
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
-    const planeRigidBody = useRef<RapierRigidBody>(null)
     const playerMeshRef = useRef<Mesh>(null)
     const [_, getKeys] = useKeyboardControls()
 
@@ -66,7 +66,7 @@ const Experience = () => {
             {/* <RigidBody> <Cube ref={cubeRef} /></RigidBody> */}
             {/* <RigidBody><Sphere /> </RigidBody> */}
 
-            <RigidBody type='dynamic' ref={characterRigidbodyRef} position={[0.4, 0, 1]} colliders={false} lockRotations>
+            <RigidBody type='dynamic' ref={characterRigidbodyRef} colliders={false} lockRotations>
                 <PlayerAvatar ref={playerMeshRef} position={[0, -0.99, 0]} />
                 <CapsuleCollider args={[0.5, 0.5]} />
             </RigidBody>

@@ -1,14 +1,9 @@
 import { useCharacterAction } from "@/store/characterActionStore"
 import { RootState } from "@react-three/fiber"
 import { type RapierRigidBody } from "@react-three/rapier"
-import { MutableRefObject, RefObject } from "react"
+import { MutableRefObject } from "react"
 import { AnimationAction, Camera, Mesh, Quaternion, Vector3 } from "three"
 
-type Animations = {
-    [name: string]: {
-        clip: AnimationAction
-    }
-}
 let playerMesh: MutableRefObject<Mesh>
 let characterRigidbody: MutableRefObject<RapierRigidBody>
 console.log("ran")
@@ -21,7 +16,19 @@ const deceleration = new Vector3(-0.0005, -0.0001, -5.0)
 const acceleration = new Vector3(1, 0.125, 10.0)
 const velocity = new Vector3(0, 0, 0)
 
-const animations: Animations = {}
+// const animationsArray: AnimationClip[] = []
+
+// const glbAnimation1 = useGLTF("./M_Walk_001.glb")
+// const glbAnimation2 = useGLTF("./M_Jog_003.glb")
+// const glbAnimation3 = useGLTF("./F_Standing_Idle_Variations_003.glb")
+
+// animationsArray.push(glbAnimation1.animations[0])
+// animationsArray.push(glbAnimation2.animations[0])
+// animationsArray.push(glbAnimation3.animations[0])
+
+// const animation = useAnimations(animationsArray, avatar?.scene)
+
+// animation?.actions?.[animation.names[0]]?.play()
 
 // set current Action
 // let currAction = animations["idle"].clip;
@@ -167,7 +174,7 @@ export default function characterController({
     playerMesh = playerMeshRef
     activeAnimation = useCharacterAction.getState()
 
-    // console.log(activeAnimation)
+    // console.log(playerMesh)
 
     characterState({ delta, camera: state.camera })
     const idealLookat = calculateIdealLookat()
