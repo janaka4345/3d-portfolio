@@ -1,16 +1,46 @@
 import { useStateEngine } from "@/store/statEngine";
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { MeshProps } from "@react-three/fiber";
+import { type MeshProps } from "@react-three/fiber";
 
 import { Ref, forwardRef, useEffect, useLayoutEffect } from "react";
 import { type BufferGeometry, type Material, type Mesh, type NormalBufferAttributes, type Object3DEventMap } from "three";
+
 const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>) => {
-    // const playerAvatar = useGLTF('./myAvatar2v1.glb')
+
+    let random = Math.floor(Math.random() * 5)
+    console.log('player ran');
+
     const playerAvatar = useGLTF('./characterCompresed.glb')
-    const animation = useGLTF('./F_Standing_Idle_Variations_003.glb')
-    const animations = useAnimations(animation.animations, playerAvatar.scene)
+    const animation1 = useGLTF('./F_Standing_Idle_Variations_003.glb')
+    const animation2 = useGLTF('./M_Standing_Expressions_001.glb')
+    const animation3 = useGLTF('./M_Standing_Expressions_013.glb')
+    const animation4 = useGLTF("./Walking.glb")
+    const animation5 = useGLTF("./test4.glb")
+    let animation;
+    switch (random) {
+        case 0:
+            animation = useAnimations(animation1.animations, playerAvatar.scene)
+            break;
+        case 1:
+            animation = useAnimations(animation2.animations, playerAvatar.scene)
+            break;
+        case 2:
+            animation = useAnimations(animation3.animations, playerAvatar.scene)
+            break;
+        case 3:
+            animation = useAnimations(animation4.animations, playerAvatar.scene)
+            break;
+        case 4:
+            animation = useAnimations(animation5.animations, playerAvatar.scene)
+            break;
+
+        default:
+            break;
+    }
+
+
+
     const page = useStateEngine((state) => state.page)
-    // console.log(animation);
 
     useLayoutEffect(() => {
         playerAvatar.scene.traverse((child) => {
@@ -20,31 +50,14 @@ const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<Normal
         });
     }, [playerAvatar.scene]);
 
-
+    console.log(animation);
     useEffect(() => {
-        // console.log(animations);
-        // playerAvatar.scene.traverse((object) => {
-        //     if (object.isObject3D) {
-        //         object.castShadow
-        //     }
-        // })
 
-        // console.log(animations.actions?.["F_Standing_Idle_Variations_007"]);
+        console.log(random);
 
-        const anima = animations?.actions?.["F_Standing_Idle_Variations_003"]
+        const anima = animation?.actions?.[animation.clips[0].name]
         anima?.play()
-        // if (animation.nodes && animation.animations) {
-        //     const anima = animations.actions?.["Action"]
-        //     anima?.play()
-        // }
-
-        // setTimeout(() => {
-        //   const anima = animations.actions?.['Walk']
-        //   anima?.play()
-        //   anima?.crossFadeFrom(animations.actions?.['Run']!, 1, true)
-        // }, 5000);
-
-    }, [])
+    }, [page])
 
 
     return (
@@ -55,3 +68,5 @@ const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<Normal
 }
 const PlayerAvatar = forwardRef(playerModel)
 export default PlayerAvatar;
+useGLTF.preload(['./characterCompresed.glb', './F_Standing_Idle_Variations_003.glb', './M_Standing_Expressions_001.glb', './M_Standing_Expressions_013.glb', './M_Walk_001.glb',
+    './M_Jog_003.glb'])
