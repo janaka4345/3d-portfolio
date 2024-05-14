@@ -1,7 +1,7 @@
 'use client'
 import { Canvas } from "@react-three/fiber"
 import Experience from "./Experience"
-import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry, OrbitControls, } from "@react-three/drei"
+import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry } from "@react-three/drei"
 import { Perf } from 'r3f-perf'
 import { Physics } from "@react-three/rapier"
 import { useEffect, useMemo, useRef } from "react"
@@ -12,6 +12,8 @@ import { isMobile } from "react-device-detect"
 
 
 const World = () => {
+    console.log('world renderd');
+
     enum Controls {
         forward = 'forward',
         back = 'back',
@@ -75,6 +77,7 @@ const World = () => {
                         }}
                         enabled={page === 'home'}
                     />
+                    {/* <OrbitControls /> */}
 
                     <Physics debug >
                         <Perf position="top-right" />
