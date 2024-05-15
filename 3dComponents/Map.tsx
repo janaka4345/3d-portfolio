@@ -1,7 +1,7 @@
 import { useGLTF } from "@react-three/drei"
 
 const Map = () => {
-    const map = useGLTF('./skillCity2finalfinal.glb')
+    const map = useGLTF('./skillCity.glb')
     return (
         <primitive object={map.scene} />
     )

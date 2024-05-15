@@ -1,10 +1,10 @@
 'use client'
 import { Canvas } from "@react-three/fiber"
 import Experience from "./Experience"
-import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry } from "@react-three/drei"
-import { Perf } from 'r3f-perf'
+import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry, Sky } from "@react-three/drei"
+// import { Perf } from 'r3f-perf'
 import { Physics } from "@react-three/rapier"
-import { useEffect, useMemo, useRef } from "react"
+import { Suspense, useEffect, useMemo, useRef } from "react"
 import { useStateEngine } from "@/store/statEngine"
 import TouchInput from "@/components/custom/TouchInput"
 import { isMobile } from "react-device-detect"
@@ -46,50 +46,55 @@ const World = () => {
         <>
             {(page != 'home' && isMobile) && <TouchInput />}
             <KeyboardControls map={map}>
+                <Suspense fallback={<div className="w-[100svw] h-[100svh] absolute bg-black">loading canvas ...</div>}>
 
-                <Canvas style={{ width: '100svw', height: '100svh' }}
-                    camera={{ fov: 50, near: 0.1, far: 90, position: [0, 0.8, 2.1] }}
-                >
 
-                    <CameraControls
-                        ref={cameraControlsRef}
-                        makeDefault
-                        minDistance={2}
-                        maxDistance={2.5}
-                        minZoom={1}
-                        maxZoom={2}
-                        minPolarAngle={1.1}
-                        maxPolarAngle={1.2}
-                        minAzimuthAngle={0}
-                        maxAzimuthAngle={0.3}
-                        mouseButtons={
-                            {
-                                left: 1,
-                                wheel: 16,
-                                middle: 0,
-                                right: 0
-                            }
-                        }
-                        touches={{
-                            one: 32,
-                            two: 512,
-                            three: 0
-                        }}
-                        enabled={page === 'home'}
-                    />
-                    {/* <OrbitControls /> */}
 
-                    <Physics
-                    //  debug 
+                    <Canvas style={{ width: '100svw', height: '100svh' }}
+                        camera={{ fov: 50, near: 0.1, far: 90, position: [0, 0.8, 2.1] }}
                     >
-                        <Perf position="top-right" />
-                        <ambientLight />
-                        {/* <Environment preset="apartment" background={page === 'home'} /> */}
-                        <Experience />
+
+                        <CameraControls
+                            ref={cameraControlsRef}
+                            makeDefault
+                            minDistance={2}
+                            maxDistance={2.5}
+                            minZoom={1}
+                            maxZoom={2}
+                            minPolarAngle={1.1}
+                            maxPolarAngle={1.2}
+                            minAzimuthAngle={0}
+                            maxAzimuthAngle={0.3}
+                            mouseButtons={
+                                {
+                                    left: 1,
+                                    wheel: 16,
+                                    middle: 0,
+                                    right: 0
+                                }
+                            }
+                            touches={{
+                                one: 32,
+                                two: 512,
+                                three: 0
+                            }}
+                            enabled={page === 'home'}
+                        />
+                        {/* <OrbitControls /> */}
+
+                        <Physics
+                        //  debug 
+                        >
+                            {/* <Perf position="top-right" /> */}
+                            {/* <directionalLight intensity={1} /> */}
+                            <ambientLight intensity={0.5} />
+                            <Sky />
+                            {/* <Environment preset="apartment" background={page === 'home'} /> */}
+                            <Experience />
 
 
-                    </Physics>
-                </Canvas>
+                        </Physics>
+                    </Canvas></Suspense>
             </KeyboardControls>
         </>
         // </StrictMode>
