@@ -2,9 +2,12 @@ import { CameraControls } from "@react-three/drei"
 import { Ref } from "react"
 import { create } from "zustand"
 
+export type Page = "load" | "home" | "skills" | "projects" | null
+
 type State = {
     camera: Ref<CameraControls> | null
-    page: string
+    page: Page
+    prevPage: Page
     state: "idle" | "walk" | "run" | "fly" | "flyIdle"
     prevState: State["state"] | null
     prevAction: string | null
@@ -13,7 +16,8 @@ type State = {
 
 type Action = {
     setCameraRef: (cameraRef: State["camera"]) => void
-    setPage: (page: State["page"]) => void
+    setPage: (page: Page) => void
+    setPrevPage: (page: Page) => void
     setState: (newState: State["state"]) => void
     setPrevState: (prevNewState: State["state"]) => void
     setPrevAction: (action: State["prevAction"]) => void
@@ -22,7 +26,10 @@ type Action = {
 
 export const useStateEngine = create<State & Action>((set) => ({
     camera: null,
+
     page: "home",
+    prevPage: null,
+
     state: "idle",
     prevState: null,
 
@@ -30,7 +37,8 @@ export const useStateEngine = create<State & Action>((set) => ({
     currAction: null,
 
     setCameraRef: (cameraRef) => set(() => ({ camera: cameraRef })),
-    setPage: (page) => set(() => ({ page: page })),
+    setPage: (page) => set((state) => ({ prevPage: state.page, page: page })),
+    setPrevPage: (page) => set(() => ({ prevPage: page })),
     setState: (newState) => set(() => ({ state: newState })),
     setPrevState: (prevNewState) => set(() => ({ prevState: prevNewState })),
 
