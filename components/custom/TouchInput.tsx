@@ -6,12 +6,13 @@ const TouchInput = () => {
     const setAction = useCharacterAction((state) => state.setAction)
     const handleTouchDown = (e: TouchEvent, action: string) => {
         // e.stopPropagation()
+        e.preventDefault();
         // console.log(e);
 
         e.preventDefault();
         switch (action) {
             case "up":
-                console.log('up');
+
                 setAction({ forward: true })
                 break;
 
@@ -37,7 +38,7 @@ const TouchInput = () => {
 
         switch (action) {
             case "up":
-                console.log('up');
+
                 setAction({ forward: false })
                 break;
 
