@@ -6,10 +6,13 @@ import { RootState } from "@react-three/fiber"
 const setPrevAction = useStateEngine.getState().setPrevAction
 const setState = useStateEngine.getState().setState
 const setPrevState = useStateEngine.getState().setPrevState
+const setPage = useStateEngine.getState().setPage
+const setPrevPage = useStateEngine.getState().setPrevPage
 
 //variable declaration only once
 let characterMove
 let page
+let prevPage
 let animation
 let currentState
 let previousState
@@ -24,6 +27,7 @@ const characterAnimationController = (state: RootState) => {
     characterMove = useCharacterAction.getState()
     //get the current page state
     page = useStateEngine.getState().page
+    prevPage = useStateEngine.getState().prevPage
     //get the animations from store
     animation = useAnimationStore.getState().animations
 
@@ -36,18 +40,53 @@ const characterAnimationController = (state: RootState) => {
 
     idleAnimationNumber = Math.floor((state.clock.getElapsedTime() * 0.1) % 3)
 
+    // change the character state based on player input
+    if (
+        (characterMove.forward ||
+            characterMove.back ||
+            characterMove.left ||
+            characterMove.right) &&
+        currentState != "walk"
+    ) {
+        console.log("state walk set")
+        setState("walk")
+        setPrevState("idle")
+    }
+    if (
+        !characterMove.forward &&
+        !characterMove.back &&
+        !characterMove.left &&
+        !characterMove.right &&
+        currentState != "idle"
+    ) {
+        console.log("state idle set")
+
+        setState("idle")
+        setPrevState("walk")
+    }
+
+    // changing the character animations
+    if (page === "home" && prevPage != null) {
+        idleAnimationNumber = 0
+        prevIdleAnimationNumber = -1
+        setPrevPage(null)
+    }
+
     if (page === "home" && idleAnimationNumber != prevIdleAnimationNumber) {
+        console.log("animation controller run**********")
+
         // rotate  three idle animations
         prevIdleAnimationNumber != -1
             ? animation?.actions?.[
                   animation.clips[prevIdleAnimationNumber].name
               ].fadeOut(2)
             : null
+
         animation?.actions?.[animation.clips[idleAnimationNumber].name]
             .reset()
             .fadeIn(2)
             .play()
-        setPrevAction(animation.clips[idleAnimationNumber].name)
+
         currentState != "idle" ? setState("idle") : null
         prevIdleAnimationNumber = idleAnimationNumber
     }
@@ -77,9 +116,5 @@ const characterAnimationController = (state: RootState) => {
         setPrevState("idle")
         prevIdleAnimationNumber = idleAnimationNumber
     }
-
-    // console.log({ currentState, previousState, prevAction })
-    // console.log({ currentState, previousState })
-    console.log(animation)
 }
 export default characterAnimationController

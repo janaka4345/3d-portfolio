@@ -6,7 +6,7 @@ import { AnimationAction, Camera, Mesh, Quaternion, Vector3 } from "three"
 
 let playerMesh: MutableRefObject<Mesh>
 let characterRigidbody: MutableRefObject<RapierRigidBody>
-console.log("ran")
+console.log("character controller ran")
 
 let activeAnimation = useCharacterAction.getState()
 
@@ -16,22 +16,6 @@ const deceleration = new Vector3(-0.0005, -0.0001, -5.0)
 const acceleration = new Vector3(1, 0.125, 10.0)
 const velocity = new Vector3(0, 0, 0)
 
-// const animationsArray: AnimationClip[] = []
-
-// const glbAnimation1 = useGLTF("./M_Walk_001.glb")
-// const glbAnimation2 = useGLTF("./M_Jog_003.glb")
-// const glbAnimation3 = useGLTF("./F_Standing_Idle_Variations_003.glb")
-
-// animationsArray.push(glbAnimation1.animations[0])
-// animationsArray.push(glbAnimation2.animations[0])
-// animationsArray.push(glbAnimation3.animations[0])
-
-// const animation = useAnimations(animationsArray, avatar?.scene)
-
-// animation?.actions?.[animation.names[0]]?.play()
-
-// set current Action
-// let currAction = animations["idle"].clip;
 let currAction: AnimationAction
 
 let prevAction: AnimationAction
@@ -135,26 +119,14 @@ const characterState = ({
 
     sideways.multiplyScalar(newVelocity.x * delta)
     mforward.multiplyScalar(newVelocity.z * delta)
-    // console.log(mforward);//DELETE
-    // console.log(sideways);//DELETE
 
     newPosition.add(oldPosition)
     newPosition.add(mforward)
     newPosition.add(sideways)
-    // console.log(newPosition);
-
-    // console.log(newPosition);
-
-    // controlObjectBody.setTranslation(mforward, true);//adding the current position check
-    // controlObjectBody.applyImpulse(sideways, true);//adding the current position check
-    // controlObjectBody.setLinvel(mforward, true)
-    // controlObjectBody.setLinvel(sideways, true);//adding the current position check
 
     characterRigidbody?.current?.setTranslation(newPosition, true)
     updateCameraTarget(delta, camera)
 }
-
-/////////////////////////////////////
 
 export default function characterController({
     state,
