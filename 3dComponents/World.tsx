@@ -48,7 +48,7 @@ const World = () => {
             <KeyboardControls map={map}>
 
                 <Canvas style={{ width: '100svw', height: '100svh' }}
-                    camera={{ fov: 50, near: 0.1, far: 20, position: [0, 0.8, 2.1] }}
+                    camera={{ fov: 50, near: 0.1, far: 90, position: [0, 0.8, 2.1] }}
                 >
 
                     <CameraControls
@@ -79,9 +79,12 @@ const World = () => {
                     />
                     {/* <OrbitControls /> */}
 
-                    <Physics debug >
+                    <Physics
+                    //  debug 
+                    >
                         <Perf position="top-right" />
-                        <Environment preset="apartment" background={page === 'home'} />
+                        <ambientLight />
+                        {/* <Environment preset="apartment" background={page === 'home'} /> */}
                         <Experience />
 
 

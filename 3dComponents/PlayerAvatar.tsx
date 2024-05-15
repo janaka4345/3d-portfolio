@@ -33,7 +33,7 @@ const playerModel = (props: MeshProps, playerRef: Ref<Mesh<BufferGeometry<Normal
         });
     }, [playerAvatar.scene]);
 
-    console.log(animation);
+    // console.log(animation);
     useEffect(() => {
 
         const anima = animation?.actions?.[animation.clips[0].name]
