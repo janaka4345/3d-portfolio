@@ -1,11 +1,24 @@
 import { useCharacterAction } from "@/store/characterActionStore"
 import { RootState } from "@react-three/fiber"
 import { type RapierRigidBody } from "@react-three/rapier"
-import { MutableRefObject } from "react"
-import { AnimationAction, Camera, Mesh, Quaternion, Vector3 } from "three"
+import { MutableRefObject, RefObject } from "react"
+import {
+    AnimationAction,
+    BufferGeometry,
+    Camera,
+    Material,
+    Mesh,
+    NormalBufferAttributes,
+    Object3DEventMap,
+    Quaternion,
+    Vector3,
+} from "three"
+import { RigidBody } from "three/examples/jsm/Addons.js"
 
 let playerMesh: MutableRefObject<Mesh>
-let characterRigidbody: MutableRefObject<RapierRigidBody>
+let characterRigidbody:
+    | RefObject<RapierRigidBody>
+    | MutableRefObject<RapierRigidBody>
 console.log("character controller ran")
 
 let activeAnimation = useCharacterAction.getState()
@@ -136,7 +149,9 @@ export default function characterController({
 }: {
     state: RootState
     delta: number
-    characterRigidbodyRef: MutableRefObject<RapierRigidBody>
+    characterRigidbodyRef:
+        | RefObject<RapierRigidBody>
+        | MutableRefObject<RapierRigidBody>
     playerMeshRef: MutableRefObject<Mesh>
 }) {
     // prevAction = currAction;    //UNDO

@@ -1,7 +1,7 @@
-import { AnimationClip, AnimationMixer } from "three"
+import { useAnimations } from "@react-three/drei"
 import { create } from "zustand"
-type State = {
-    animations: AnimationClip | AnimationMixer | null
+export type State = {
+    animations: ReturnType<typeof useAnimations> | null
 }
 
 type Action = {

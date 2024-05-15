@@ -3,10 +3,8 @@ import { useCharacterAction } from "@/store/characterActionStore"
 import { useStateEngine } from "@/store/statEngine"
 import { RootState } from "@react-three/fiber"
 
-const setPrevAction = useStateEngine.getState().setPrevAction
 const setState = useStateEngine.getState().setState
 const setPrevState = useStateEngine.getState().setPrevState
-const setPage = useStateEngine.getState().setPage
 const setPrevPage = useStateEngine.getState().setPrevPage
 
 //variable declaration only once
@@ -17,7 +15,6 @@ let animation
 let currentState
 let previousState
 let prevAction
-let currAction
 
 let idleAnimationNumber = 0
 let prevIdleAnimationNumber = -1
@@ -77,11 +74,13 @@ const characterAnimationController = (state: RootState) => {
 
         // rotate  three idle animations
         prevIdleAnimationNumber != -1
-            ? animation?.actions?.[
+            ? // @ts-ignore
+              animation?.actions?.[
                   animation.clips[prevIdleAnimationNumber].name
               ].fadeOut(2)
             : null
 
+        // @ts-ignore
         animation?.actions?.[animation.clips[idleAnimationNumber].name]
             .reset()
             .fadeIn(2)
@@ -96,8 +95,10 @@ const characterAnimationController = (state: RootState) => {
         currentState != previousState &&
         currentState === "walk"
     ) {
+        // @ts-ignore
         animation?.actions?.[animation.clips[0].name].fadeOut(1)
 
+        // @ts-ignore
         animation?.actions?.[animation.clips[5].name].reset().fadeIn(1).play()
         // setPrevAction(animation.clips[0].name)
         setPrevState("walk")
@@ -109,8 +110,10 @@ const characterAnimationController = (state: RootState) => {
         currentState != previousState &&
         currentState === "idle"
     ) {
+        // @ts-ignore
         animation?.actions?.[animation.clips[5].name].fadeOut(1)
 
+        // @ts-ignore
         animation?.actions?.[animation.clips[0].name].reset().fadeIn(1).play()
         // setPrevAction(animation.clips[5].name)
         setPrevState("idle")

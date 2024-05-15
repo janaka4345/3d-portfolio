@@ -4,12 +4,10 @@ import { useCharacterAction } from "@/store/characterActionStore";
 
 const TouchInput = () => {
     const setAction = useCharacterAction((state) => state.setAction)
-    const handleTouchDown = (e: TouchEvent, action: string) => {
+    const handleTouchDown = (action: string) => {
         // e.stopPropagation()
-        e.preventDefault();
-        // console.log(e);
-
-        e.preventDefault();
+        // e.preventDefault();
+        // console.log();
         switch (action) {
             case "up":
 
@@ -32,9 +30,9 @@ const TouchInput = () => {
         }
     }
 
-    const handleTouchUp = (e: TouchEvent, action: string) => {
+    const handleTouchUp = (action: string) => {
         // e.stopPropagation()
-        e.preventDefault();
+        // e.preventDefault();
 
         switch (action) {
             case "up":
@@ -62,10 +60,10 @@ const TouchInput = () => {
 
     return (
         <div className="z-50 flex flex-row gap-4 fixed top-1/2 pointer-events-auto">
-            <div onTouchStart={(e) => handleTouchDown(e, "up")} onTouchEnd={(e) => handleTouchUp(e, "up")} className="w-52 select-none pointer-events-auto cursor-pointer   h-52 bg-slate-500">up</div>
-            <div onTouchStart={(e) => handleTouchDown(e, "down")} onTouchEnd={(e) => handleTouchUp(e, "down")} className="w-52 select-none pointer-events-auto cursor-pointer  h-52 bg-slate-500">down</div>
-            <div onTouchStart={(e) => handleTouchDown(e, "left")} onTouchEnd={(e) => handleTouchUp(e, "left")} className="w-52 select-none pointer-events-auto cursor-pointer  h-52 bg-slate-500">left</div>
-            <div onTouchStart={(e) => handleTouchDown(e, "right")} onTouchEnd={(e) => handleTouchUp(e, "right")} className="w-52 select-none pointer-events-auto cursor-pointer  h-52 bg-slate-500">right</div>
+            <div onTouchStart={() => handleTouchDown("up")} onTouchEnd={() => handleTouchUp("up")} className="w-52 select-none pointer-events-auto cursor-pointer   h-52 bg-slate-500">up</div>
+            <div onTouchStart={() => handleTouchDown("down")} onTouchEnd={() => handleTouchUp("down")} className="w-52 select-none pointer-events-auto cursor-pointer  h-52 bg-slate-500">down</div>
+            <div onTouchStart={() => handleTouchDown("left")} onTouchEnd={() => handleTouchUp("left")} className="w-52 select-none pointer-events-auto cursor-pointer  h-52 bg-slate-500">left</div>
+            <div onTouchStart={() => handleTouchDown("right")} onTouchEnd={() => handleTouchUp("right")} className="w-52 select-none pointer-events-auto cursor-pointer  h-52 bg-slate-500">right</div>
         </div>
     )
 }

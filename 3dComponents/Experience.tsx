@@ -2,7 +2,7 @@ import { useStateEngine } from '@/store/statEngine'
 import { useFrame } from '@react-three/fiber'
 import { CapsuleCollider, RigidBody, type RapierRigidBody } from '@react-three/rapier'
 import { useEffect, useRef } from 'react'
-import { Vector3, type Mesh } from 'three'
+import { BufferGeometry, Material, NormalBufferAttributes, Object3DEventMap, Vector3, type Mesh } from 'three'
 import Plane from './Plane'
 // import PlayerAvatar from './PlayerAvatar'  //replace it with player2
 import { useCharacterAction } from '@/store/characterActionStore'
@@ -15,15 +15,13 @@ import Map from './Map'
 const Experience = () => {
 
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
-    const playerMeshRef = useRef<Mesh>(null)
+    const playerMeshRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null)
     const [_, getKeys] = useKeyboardControls()
 
     const page = useStateEngine((state) => state.page)
     const setActiveAction = useCharacterAction((state) => state.setAction)
     // const action = useCharacterAction()
     console.log('experience  renderd');
-    const setState = useStateEngine.getState().setState
-    const setPrevState = useStateEngine.getState().setPrevState
 
 
     console.log('experience ran');
@@ -39,13 +37,7 @@ const Experience = () => {
         }
     }, [page])
 
-
-    let prevNum = 0
-    let currNum = 0
     useFrame((state, delta) => {
-
-        console.log(state);
-
 
         //controlle the animation of the character with state changes
         characterAnimationController(state)
@@ -57,6 +49,7 @@ const Experience = () => {
             characterRigidbodyRef.current?.setEnabled(true)
         }
         if (page === 'home') {
+            //@ts-ignore
             page === 'home' && playerMeshRef.current?.setRotationFromAxisAngle(new Vector3(0, 1, 0), (state?.controls?.azimuthAngle * 1.5 - 0.5))
 
 
@@ -75,7 +68,10 @@ const Experience = () => {
         if (page === 'skills' && characterRigidbodyRef.current) {
 
             // characterRigidbodyRef.current?.setEnabled(true)
-            characterController({ state, delta, characterRigidbodyRef, playerMeshRef }) //TODO typescript rrors
+            if (playerMeshRef.current) {
+                //@ts-ignore
+                characterController({ state, delta, characterRigidbodyRef, playerMeshRef }) //TODO typescript rrors
+            }
 
             // state.camera.position.copy(new Vector3(characterRigidbodyRef.current?.translation().x - 2, characterRigidbodyRef.current?.translation().y + 1, characterRigidbodyRef.current?.translation().z + 2))
 
@@ -85,6 +81,7 @@ const Experience = () => {
         }
         if (page === 'projects') {
             characterRigidbodyRef.current?.setEnabled(true)
+            //@ts-ignore
             characterController({ state, delta, characterRigidbodyRef, playerMeshRef }) //TODO typescript rrors
 
 
