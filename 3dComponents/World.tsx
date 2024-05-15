@@ -1,13 +1,14 @@
 'use client'
+import { CameraControls, KeyboardControls, KeyboardControlsEntry } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import Experience from "./Experience"
-import { CameraControls, Environment, KeyboardControls, KeyboardControlsEntry, Sky } from "@react-three/drei"
 // import { Perf } from 'r3f-perf'
+import TouchInput from "@/components/custom/TouchInput"
+import { useStateEngine } from "@/store/statEngine"
 import { Physics } from "@react-three/rapier"
 import { Suspense, useEffect, useMemo, useRef } from "react"
-import { useStateEngine } from "@/store/statEngine"
-import TouchInput from "@/components/custom/TouchInput"
 import { isMobile } from "react-device-detect"
+import Lights from "./Lights"
 
 
 
@@ -82,19 +83,18 @@ const World = () => {
                         />
                         {/* <OrbitControls /> */}
 
+
                         <Physics
                         //  debug 
                         >
                             {/* <Perf position="top-right" /> */}
-                            {/* <directionalLight intensity={1} /> */}
-                            <ambientLight intensity={0.5} />
-                            <Sky />
-                            {/* <Environment preset="apartment" background={page === 'home'} /> */}
+                            <Lights />
                             <Experience />
 
 
                         </Physics>
-                    </Canvas></Suspense>
+                    </Canvas>
+                </Suspense>
             </KeyboardControls>
         </>
         // </StrictMode>

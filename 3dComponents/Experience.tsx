@@ -8,10 +8,10 @@ import Plane from './Plane'
 import { useCharacterAction } from '@/store/characterActionStore'
 import { useKeyboardControls } from '@react-three/drei'
 import { isMobile } from 'react-device-detect'
+import Map from './Map'
 import PlayerAvatar from './PlayerAvatar2'
 import characterAnimationController from './characterAnimationController'
 import characterController from './characterController'
-import Map from './Map'
 const Experience = () => {
 
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
@@ -98,6 +98,7 @@ const Experience = () => {
                 <PlayerAvatar ref={playerMeshRef} position={[0, -0.99, 0]} scale={[1, 0.9, 1]} />
                 <CapsuleCollider args={[0.5, 0.5]} />
             </RigidBody>
+            {/* <Preload all /> */}
 
 
         </>
