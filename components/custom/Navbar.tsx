@@ -4,7 +4,7 @@ import {
     SheetClose,
     SheetContent,
     SheetFooter,
-    SheetTrigger
+    SheetTrigger,
 } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 import { useStateEngine, type Page } from "@/store/statEngine"
@@ -17,18 +17,20 @@ type MenuItem = {
     triggerName: Page
 }
 
-const menuItems: MenuItem[] = [{
-    name: 'Home',
-    triggerName: 'home'
-},
-{
-    name: 'Skill Town',
-    triggerName: 'skills'
-},
-{
-    name: 'Project Space',
-    triggerName: 'projects'
-}]
+const menuItems: MenuItem[] = [
+    {
+        name: "Home",
+        triggerName: "home",
+    },
+    {
+        name: "Skill Town",
+        triggerName: "skills",
+    },
+    {
+        name: "Project Space",
+        triggerName: "projects",
+    },
+]
 
 export const Navbar = () => {
     const setPage = useStateEngine((state) => state.setPage)
@@ -68,43 +70,59 @@ export const Navbar = () => {
 
                 <div className=" hidden w-auto md:block ">
                     <ul className="mt-0  flex   flex-row items-center  space-x-4  rounded-lg  p-0 font-medium lg:space-x-8 rtl:space-x-reverse ">
-
                         {menuItems.map((item) => (
                             <li key={item.triggerName}>
                                 <Button
-                                    variant='none'
-                                    onClick={() => handleClick(item.triggerName)}
+                                    variant="none"
+                                    onClick={() =>
+                                        handleClick(item.triggerName)
+                                    }
                                     className=" cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 hover:bg-transparent hover:text-blue-700 lg:text-lg "
                                 >
                                     {item.name}
                                 </Button>
-                            </li>))}
+                            </li>
+                        ))}
                         <li>
                             <Message />
                         </li>
                     </ul>
                 </div>
-                <div className='block md:hidden'>
+                <div className="block md:hidden">
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button variant="none">
-                                <svg className="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 17 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                                <svg
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                    fill="none"
+                                    viewBox="0 0 17 14"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M1 1h15M1 7h15M1 13h15"
+                                    />
                                 </svg>
                             </Button>
                         </SheetTrigger>
                         <SheetContent className="flex flex-col bg-green-400">
-
                             <div className="flex flex-col gap-4 py-4">
-
                                 {menuItems.map((item) => (
                                     <SheetClose asChild>
-                                        <Button key={item.name} onClick={() => handleClick(item.triggerName)} className="text-right">
+                                        <Button
+                                            key={item.name}
+                                            onClick={() =>
+                                                handleClick(item.triggerName)
+                                            }
+                                            className="text-right"
+                                        >
                                             {item.name}
                                         </Button>
                                     </SheetClose>
                                 ))}
-
                             </div>
                             <SheetFooter className="mt-auto">
                                 <SheetClose asChild>
@@ -117,9 +135,7 @@ export const Navbar = () => {
                         </SheetContent>
                     </Sheet>
                 </div>
-
             </div>
         </nav>
-
     )
 }
