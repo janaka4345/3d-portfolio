@@ -99,7 +99,7 @@ const characterAnimationController = (state: RootState) => {
         animation?.actions?.[animation.clips[0].name].fadeOut(1)
 
         // @ts-ignore
-        animation?.actions?.[animation.clips[5].name].reset().fadeIn(1).play()
+        animation?.actions?.[animation.clips[4].name].reset().fadeIn(1).play()
         // setPrevAction(animation.clips[0].name)
         setPrevState("walk")
         prevIdleAnimationNumber = idleAnimationNumber
@@ -111,7 +111,7 @@ const characterAnimationController = (state: RootState) => {
         currentState === "idle"
     ) {
         // @ts-ignore
-        animation?.actions?.[animation.clips[5].name].fadeOut(1)
+        animation?.actions?.[animation.clips[4].name].fadeOut(1)
 
         // @ts-ignore
         animation?.actions?.[animation.clips[0].name].reset().fadeIn(1).play()

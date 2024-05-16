@@ -1,18 +1,22 @@
-'use client'
+"use client"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 
 const StartAnimation = () => {
     return (
         <LazyMotion features={domAnimation}>
-            <m.h1 initial={{ y: "0" }} animate={{ y: "-600px", transition: { duration: 2 } }} className='absolute top-0 left-0 right-0 bottom-0 m-auto  w-fit h-fit z-50 text-4xl uppercase '>Janaka Kariyawasam</m.h1>
+            <m.h1
+                initial={{ y: "0" }}
+                animate={{ y: "-60dvh", transition: { duration: 3 } }}
+                className="absolute bottom-0 left-0 right-0 top-0 z-50 m-auto  h-fit w-fit text-center text-4xl uppercase "
+            >
+                Janaka Kariyawasam
+            </m.h1>
             <m.div
                 initial={{ x: "0" }}
                 animate={{ x: "-100%", transition: { duration: 3 } }}
-                className='absolute z-40  inset-0 w-[100svw] h-[100svh] bg-gradient-to-r from-purple-500 to-pink-500 flex justify-center items-center'
-            >
-            </m.div>
+                className="absolute inset-0  z-40 flex h-[100svh] w-[100svw] items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500"
+            ></m.div>
         </LazyMotion>
-
     )
 }
 

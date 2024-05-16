@@ -1,5 +1,9 @@
-'use client'
-import { CameraControls, KeyboardControls, KeyboardControlsEntry } from "@react-three/drei"
+"use client"
+import {
+    CameraControls,
+    KeyboardControls,
+    KeyboardControlsEntry,
+} from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import Experience from "./Experience"
 // import { Perf } from 'r3f-perf'
@@ -10,51 +14,57 @@ import { Suspense, useEffect, useMemo, useRef } from "react"
 import { isMobile } from "react-device-detect"
 import Lights from "./Lights"
 
-
-
 const World = () => {
-    console.log('world renderd');
+    console.log("world renderd")
 
     enum Controls {
-        forward = 'forward',
-        back = 'back',
-        left = 'left',
-        right = 'right',
-        jump = 'jump',
+        forward = "forward",
+        back = "back",
+        left = "left",
+        right = "right",
+        jump = "jump",
     }
 
-    const map = useMemo<KeyboardControlsEntry<Controls>[]>(() => [
-        { name: Controls.forward, keys: ['ArrowUp', 'KeyW'] },
-        { name: Controls.back, keys: ['ArrowDown', 'KeyS'] },
-        { name: Controls.left, keys: ['ArrowLeft', 'KeyA'] },
-        { name: Controls.right, keys: ['ArrowRight', 'KeyD'] },
-        { name: Controls.jump, keys: ['Space'] },
-    ], [])
+    const map = useMemo<KeyboardControlsEntry<Controls>[]>(
+        () => [
+            { name: Controls.forward, keys: ["ArrowUp", "KeyW"] },
+            { name: Controls.back, keys: ["ArrowDown", "KeyS"] },
+            { name: Controls.left, keys: ["ArrowLeft", "KeyA"] },
+            { name: Controls.right, keys: ["ArrowRight", "KeyD"] },
+            { name: Controls.jump, keys: ["Space"] },
+        ],
+        []
+    )
 
     const cameraControlsRef = useRef<CameraControls>(null)
     const page = useStateEngine((state) => state.page)
 
     useEffect(() => {
         cameraControlsRef.current?.reset()
-        return () => {
-
-        }
-    },)
-
+        return () => {}
+    })
 
     return (
         // <StrictMode>//TODO
         <>
-            {(page != 'home' && isMobile) && <TouchInput />}
+            {page != "home" && isMobile && <TouchInput />}
             <KeyboardControls map={map}>
-                <Suspense fallback={<div className="w-[100svw] h-[100svh] absolute bg-black">loading canvas ...</div>}>
-
-
-
-                    <Canvas style={{ width: '100svw', height: '100svh' }}
-                        camera={{ fov: 50, near: 0.1, far: 90, position: [0, 0.8, 2.1] }}
+                <Suspense
+                    fallback={
+                        <div className="absolute left-1/2 top-1/2">
+                            loading canvas ...
+                        </div>
+                    }
+                >
+                    <Canvas
+                        style={{ width: "100svw", height: "100svh" }}
+                        camera={{
+                            fov: 50,
+                            near: 0.1,
+                            far: 90,
+                            position: [0, 0.8, 2.1],
+                        }}
                     >
-
                         <CameraControls
                             ref={cameraControlsRef}
                             makeDefault
@@ -66,32 +76,27 @@ const World = () => {
                             maxPolarAngle={1.2}
                             minAzimuthAngle={0}
                             maxAzimuthAngle={0.3}
-                            mouseButtons={
-                                {
-                                    left: 1,
-                                    wheel: 16,
-                                    middle: 0,
-                                    right: 0
-                                }
-                            }
+                            mouseButtons={{
+                                left: 1,
+                                wheel: 16,
+                                middle: 0,
+                                right: 0,
+                            }}
                             touches={{
                                 one: 32,
                                 two: 512,
-                                three: 0
+                                three: 0,
                             }}
-                            enabled={page === 'home'}
+                            enabled={page === "home"}
                         />
                         {/* <OrbitControls /> */}
 
-
                         <Physics
-                        //  debug 
+                        //  debug
                         >
                             {/* <Perf position="top-right" /> */}
                             <Lights />
                             <Experience />
-
-
                         </Physics>
                     </Canvas>
                 </Suspense>
