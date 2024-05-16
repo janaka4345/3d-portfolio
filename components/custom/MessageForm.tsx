@@ -40,7 +40,7 @@ const MessageForm = () => {
     }
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className=" max-w-[60dvw] space-y-8 sm:max-w-[500px]">
                 <FormField
                     control={form.control}
                     name="name"
@@ -74,7 +74,7 @@ const MessageForm = () => {
                         <FormItem>
                             <FormLabel>Message:</FormLabel>
                             <FormControl>
-                                <textarea placeholder="Your message" rows={4} cols={50}  {...field} />
+                                <textarea placeholder="Your message" rows={4} className="w-full"  {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

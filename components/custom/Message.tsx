@@ -23,11 +23,11 @@ const Message = () => {
                     Leave a Message
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className=" max-w-[80dvw] sm:max-w-[500px]">
                 <DialogHeader>
-                    <DialogTitle>Edit profile</DialogTitle>
+                    <DialogTitle>Leave a Message</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        I will get back to you ASAP!!
                     </DialogDescription>
                 </DialogHeader>
 
