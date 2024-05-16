@@ -50,7 +50,7 @@ const Experience = () => {
             true
         )
 
-        return () => { }
+        return () => {}
     }, [page])
 
     useFrame((state, delta) => {
