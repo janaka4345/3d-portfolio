@@ -111,9 +111,9 @@ export const Navbar = () => {
                         <SheetContent className="flex flex-col bg-green-400">
                             <div className="flex flex-col gap-4 py-4">
                                 {menuItems.map((item) => (
-                                    <SheetClose asChild>
+                                    <SheetClose key={item.name} asChild>
                                         <Button
-                                            key={item.name}
+
                                             onClick={() =>
                                                 handleClick(item.triggerName)
                                             }
