@@ -62,12 +62,12 @@ const Experience = () => {
             characterRigidbodyRef.current?.setEnabled(true)
         }
         if (page === "home") {
-            page === "home" &&
-                playerMeshRef.current?.setRotationFromAxisAngle(
-                    new Vector3(0, 1, 0),
-                    //@ts-ignore
-                    state?.controls?.azimuthAngle * 1.5 - 0.5
-                )
+            // page === "home" &&
+            playerMeshRef.current?.setRotationFromAxisAngle(
+                new Vector3(0, 1, 0),
+                //@ts-ignore
+                state?.controls?.azimuthAngle * 1.5 - 0.5
+            )
         }
         if (page != "home" && !isMobile) {
             setActiveAction({

@@ -25,7 +25,6 @@ export const Navbar = () => {
 
     return (
         <>
-
             {/* <nav className="fixed left-0 top-0 z-30 flex flex-row gap-4">
                 <Button onClick={() => handleClick("home")}>home</Button>
                 <Button onClick={() => handleClick("skills")}>skill town</Button>
@@ -34,26 +33,46 @@ export const Navbar = () => {
                 </Button>
             </nav> */}
 
-
-
-
-            <nav className="  w-full fixed left-0 top-0 z-30 bg-transparent">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <Button onClick={() => handleClick("home")} className={cn(buttonVariants({ variant: 'ghost' }), "flex items-center space-x-3 rtl:space-x-reverse")}>
+            <nav className="  fixed left-0 top-0 z-30 w-full bg-transparent">
+                <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+                    <Button
+                        onClick={() => handleClick("home")}
+                        className={cn(
+                            buttonVariants({ variant: "ghost" }),
+                            "flex items-center space-x-3 rtl:space-x-reverse"
+                        )}
+                    >
                         {/* <img src="" className="h-8" alt="Flowbite Logo" /> */}
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap ">JANAKA</span>
+                        <span className="self-center whitespace-nowrap text-base font-semibold lg:text-2xl ">
+                            J
+                        </span>
                     </Button>
 
-                    <div className=" w-auto  " >
-                        <ul className="font-medium flex   p-0 mt-0  items-center  rounded-lg  flex-row space-x-8 rtl:space-x-reverse ">
+                    <div className=" hidden w-auto md:block ">
+                        <ul className="mt-0  flex   flex-row items-center  space-x-4  rounded-lg  p-0 font-medium lg:space-x-8 rtl:space-x-reverse ">
                             <li>
-                                <a onClick={() => handleClick("home")} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent border-0 hover:text-blue-700 p-0 ">Home</a>
+                                <a
+                                    onClick={() => handleClick("home")}
+                                    className="cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 hover:bg-transparent hover:text-blue-700 lg:text-lg "
+                                >
+                                    Home
+                                </a>
                             </li>
                             <li>
-                                <a onClick={() => handleClick("skills")} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent border-0 hover:text-blue-700 p-0 ">Skill Town</a>
+                                <a
+                                    onClick={() => handleClick("skills")}
+                                    className=" cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 hover:bg-transparent hover:text-blue-700 lg:text-lg "
+                                >
+                                    Skill Town
+                                </a>
                             </li>
                             <li>
-                                <a onClick={() => handleClick("projects")} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 hover:bg-transparent border-0 hover:text-blue-700 p-0 ">Project Space</a>
+                                <a
+                                    onClick={() => handleClick("projects")}
+                                    className=" cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 hover:bg-transparent hover:text-blue-700 lg:text-lg "
+                                >
+                                    Project Space
+                                </a>
                             </li>
                             <li>
                                 <a
@@ -64,13 +83,12 @@ export const Navbar = () => {
                                     })}
                                 >
                                     Leave a Message
-                                </a></li>
-
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </>
-
     )
 }
