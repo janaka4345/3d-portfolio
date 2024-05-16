@@ -1,9 +1,8 @@
+import { Navbar } from "@/components/custom/Navbar"
+import { Toaster } from "@/components/ui/sonner"
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import "./globals.css"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Navbar } from "@/components/custom/Navbar"
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "800"] })
 
@@ -23,6 +22,7 @@ export default function RootLayout({
             <body className={poppins.className}>
                 <Navbar />
                 {children}
+                <Toaster position="top-center" expand={false} richColors />
             </body>
         </html>
     )
