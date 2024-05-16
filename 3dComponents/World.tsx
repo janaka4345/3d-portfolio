@@ -80,7 +80,8 @@ const World = () => {
                             maxPolarAngle={1.2}
                             minAzimuthAngle={0}
                             maxAzimuthAngle={0.3}
-                            azimuthAngle={isMobile ? 20 * MathUtils.DEG2RAD : undefined}
+                            azimuthAngle={isMobile ? 23 * MathUtils.DEG2RAD : undefined}
+                            distance={isMobile ? 3 : undefined}
                             mouseButtons={{
                                 left: 1,
                                 wheel: 16,
