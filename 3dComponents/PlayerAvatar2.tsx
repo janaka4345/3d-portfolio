@@ -1,6 +1,5 @@
 // import { useStateEngine } from "@/store/statEngine";
 import { useAnimationStore } from "@/store/animationStore"
-import { useStateEngine } from "@/store/statEngine"
 import { useAnimations, useGLTF } from "@react-three/drei"
 import { type MeshProps } from "@react-three/fiber"
 

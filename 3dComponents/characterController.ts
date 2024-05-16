@@ -2,18 +2,7 @@ import { useCharacterAction } from "@/store/characterActionStore"
 import { RootState } from "@react-three/fiber"
 import { type RapierRigidBody } from "@react-three/rapier"
 import { MutableRefObject, RefObject } from "react"
-import {
-    AnimationAction,
-    BufferGeometry,
-    Camera,
-    Material,
-    Mesh,
-    NormalBufferAttributes,
-    Object3DEventMap,
-    Quaternion,
-    Vector3,
-} from "three"
-import { RigidBody } from "three/examples/jsm/Addons.js"
+import { AnimationAction, Camera, Mesh, Quaternion, Vector3 } from "three"
 
 let playerMesh: MutableRefObject<Mesh>
 let characterRigidbody:

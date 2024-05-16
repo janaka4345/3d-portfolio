@@ -50,7 +50,7 @@ const Experience = () => {
             true
         )
 
-        return () => {}
+        return () => { }
     }, [page])
 
     useFrame((state, delta) => {
@@ -62,10 +62,10 @@ const Experience = () => {
             characterRigidbodyRef.current?.setEnabled(true)
         }
         if (page === "home") {
-            //@ts-ignore
             page === "home" &&
                 playerMeshRef.current?.setRotationFromAxisAngle(
                     new Vector3(0, 1, 0),
+                    //@ts-ignore
                     state?.controls?.azimuthAngle * 1.5 - 0.5
                 )
         }
@@ -82,11 +82,11 @@ const Experience = () => {
         if (page === "skills" && characterRigidbodyRef.current) {
             // characterRigidbodyRef.current?.setEnabled(true)
             if (playerMeshRef.current) {
-                //@ts-ignore
                 characterController({
                     state,
                     delta,
                     characterRigidbodyRef,
+                    //@ts-ignore
                     playerMeshRef,
                 }) //TODO typescript rrors
             }
@@ -95,11 +95,11 @@ const Experience = () => {
         }
         if (page === "projects") {
             characterRigidbodyRef.current?.setEnabled(true)
-            //@ts-ignore
             characterController({
                 state,
                 delta,
                 characterRigidbodyRef,
+                //@ts-ignore
                 playerMeshRef,
             }) //TODO typescript rrors
         }
