@@ -13,6 +13,7 @@ import { Physics } from "@react-three/rapier"
 import { Suspense, useEffect, useMemo, useRef } from "react"
 import { isMobile } from "react-device-detect"
 import Lights from "./Lights"
+import { MathUtils } from "three"
 
 const World = () => {
     console.log("world renderd")
@@ -41,8 +42,11 @@ const World = () => {
 
     useEffect(() => {
         cameraControlsRef.current?.reset()
-        return () => {}
-    })
+        // console.log('ran');
+
+        return () => { }
+    }, [])
+
 
     return (
         // <StrictMode>//TODO
@@ -76,6 +80,7 @@ const World = () => {
                             maxPolarAngle={1.2}
                             minAzimuthAngle={0}
                             maxAzimuthAngle={0.3}
+                            azimuthAngle={isMobile ? 20 * MathUtils.DEG2RAD : undefined}
                             mouseButtons={{
                                 left: 1,
                                 wheel: 16,
