@@ -68,17 +68,25 @@ const characterAnimationController = (state: RootState) => {
         prevIdleAnimationNumber = -1
         setPrevPage(null)
     }
+    // console.log({
+    //     clock: state.clock.elapsedTime,
+    //     idleAnimationNumber,
+    //     prevIdleAnimationNumber,
+    // })
 
-    if (page === "home" && idleAnimationNumber != prevIdleAnimationNumber) {
-        console.log("animation controller run**********")
+    if (
+        page === "home" &&
+        idleAnimationNumber != prevIdleAnimationNumber &&
+        animation
+    ) {
+        // console.log("animation controller run**********")
 
         // rotate  three idle animations
-        prevIdleAnimationNumber != -1
-            ? // @ts-ignore
-              animation?.actions?.[
-                  animation.clips[prevIdleAnimationNumber].name
-              ].fadeOut(2)
-            : null
+        prevIdleAnimationNumber != -1 &&
+            // @ts-ignore
+            animation?.actions?.[
+                animation.clips[prevIdleAnimationNumber].name
+            ].fadeOut(2)
 
         // @ts-ignore
         animation?.actions?.[animation.clips[idleAnimationNumber].name]
@@ -96,7 +104,7 @@ const characterAnimationController = (state: RootState) => {
         currentState === "walk"
     ) {
         // @ts-ignore
-        animation?.actions?.[animation.clips[0].name].fadeOut(1)
+        animation?.actions?.[animation.clips[1].name].fadeOut(1)
 
         // @ts-ignore
         animation?.actions?.[animation.clips[4].name].reset().fadeIn(1).play()
@@ -114,7 +122,7 @@ const characterAnimationController = (state: RootState) => {
         animation?.actions?.[animation.clips[4].name].fadeOut(1)
 
         // @ts-ignore
-        animation?.actions?.[animation.clips[0].name].reset().fadeIn(1).play()
+        animation?.actions?.[animation.clips[1].name].reset().fadeIn(1).play()
         // setPrevAction(animation.clips[5].name)
         setPrevState("idle")
         prevIdleAnimationNumber = idleAnimationNumber
