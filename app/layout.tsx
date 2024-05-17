@@ -10,6 +10,17 @@ export const metadata: Metadata = {
     title: "Janaka Kariyawasam",
     description:
         "I'm a skilled full stack web developer / designer  with experience in Node, React and Typescript. Explore my portfolio to see my latest projects and contact me for your web development needs.",
+    metadataBase: new URL('http://janakakariyawasam.xyz'),
+    alternates: {
+        canonical: '/',
+        languages: {
+            'en-US': '/en-US',
+            'de-DE': '/de-DE',
+        },
+    },
+    openGraph: {
+        images: '/og-image.png',
+    },
 }
 
 export default function RootLayout({
