@@ -8,7 +8,7 @@ let playerMesh: MutableRefObject<Mesh>
 let characterRigidbody:
     | RefObject<RapierRigidBody>
     | MutableRefObject<RapierRigidBody>
-console.log("character controller ran")
+// console.log("character controller ran")
 
 let activeAnimation = useCharacterAction.getState()
 

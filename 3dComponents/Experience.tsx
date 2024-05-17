@@ -38,19 +38,19 @@ const Experience = () => {
     const page = useStateEngine((state) => state.page)
     const setActiveAction = useCharacterAction((state) => state.setAction)
     // const action = useCharacterAction()
-    console.log("experience  renderd")
+    // console.log("experience  renderd")
 
-    console.log("experience ran")
+    // console.log("experience ran")
 
     useEffect(() => {
-        console.log("experience use effect ran")
+        // console.log("experience use effect ran")
         characterRigidbodyRef.current?.setEnabled(false)
         characterRigidbodyRef.current?.setTranslation(
             new Vector3(0.4, 0, 1),
             true
         )
 
-        return () => {}
+        return () => { }
     }, [page])
 
     useFrame((state, delta) => {

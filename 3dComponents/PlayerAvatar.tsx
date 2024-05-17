@@ -22,7 +22,7 @@ const playerModel = (
         >
     >
 ) => {
-    console.log("player ran")
+    // console.log("player ran")
 
     //Character loaded
     const playerAvatar = useGLTF("./characterCompresed.glb")
@@ -47,8 +47,12 @@ const playerModel = (
 
     // console.log(animation);
     useEffect(() => {
-        const anima = animation?.actions?.[animation.clips[0].name]
-        anima?.play()
+        // const anima = animation?.actions?.[animation.clips[0].name]
+        // anima?.play()
+        // @ts-ignore
+        // animation?.actions?.[animation.clips[0].name]
+        //     .reset()
+        //     .play()
     }, [])
 
     return (

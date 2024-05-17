@@ -27,7 +27,7 @@ const playerModel = (
 
     const setAnimation = useAnimationStore((state) => state.setAnimations)
 
-    console.log("player model renderd")
+    // console.log("player model renderd")
     // const num = Math.floor(Math.random() * 5)
     // // const num = 6
 
@@ -73,11 +73,12 @@ function loadGLTFModels() {
     const animationArray: AnimationClip[] = []
 
     //Character loadedAP
-    const playerAvatar = useGLTF("./characterCompresed.glb")
+    // const playerAvatar = useGLTF("./characterCompresed.glb")
+    const playerAvatar = useGLTF("./avatarcompreed.glb")
 
     //character animations loaded
-    const glbAnimation1 = useGLTF("./F_Standing_Idle_Variations_003.glb")
-    const glbAnimation2 = useGLTF("./M_Standing_Expressions_001.glb")
+    const glbAnimation1 = useGLTF("./M_Standing_Expressions_001.glb")
+    const glbAnimation2 = useGLTF("./F_Standing_Idle_Variations_003.glb")
     const glbAnimation3 = useGLTF("./M_Standing_Expressions_013.glb")
     const glbAnimation4 = useGLTF("./idle.glb")
     const glbAnimation5 = useGLTF("./walking2.glb")

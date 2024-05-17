@@ -23,7 +23,7 @@ const menuItems: MenuItem[] = [
         triggerName: "home",
     },
     {
-        name: "Skill Town",
+        name: "Skill City",
         triggerName: "skills",
     },
     {
@@ -108,7 +108,7 @@ export const Navbar = () => {
                                 </svg>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent className="flex flex-col bg-green-400">
+                        <SheetContent className="flex flex-col bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
                             <div className="flex flex-col gap-4 py-4">
                                 {menuItems.map((item) => (
                                     <SheetClose key={item.name} asChild>

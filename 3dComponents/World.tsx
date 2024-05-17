@@ -16,7 +16,7 @@ import Lights from "./Lights"
 import { MathUtils } from "three"
 
 const World = () => {
-    console.log("world renderd")
+    // console.log("world renderd")
 
     enum Controls {
         forward = "forward",
@@ -44,7 +44,7 @@ const World = () => {
         cameraControlsRef.current?.reset()
         // console.log('ran');
 
-        return () => {}
+        return () => { }
     }, [])
 
     return (
