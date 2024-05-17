@@ -57,34 +57,46 @@ const TouchInput = () => {
     }
 
     return (
-        <div className="pointer-events-auto fixed bottom-0 right-0 z-50 flex flex-row gap-4">
+        <div className="pointer-events-auto fixed bottom-0 right-0 z-50 grid grid-cols-3 grid-rows-2 gap-4">
             <div
                 onTouchStart={() => handleTouchDown("up")}
                 onTouchEnd={() => handleTouchUp("up")}
-                className="pointer-events-auto h-10 w-10 cursor-pointer   select-none bg-slate-500"
+                className="pointer-events-auto h-10 w-10   col-start-2 col-end-3 row-start-1 row-end-2     bg-white"
             >
-                up
+                <svg className="w-full h-full text-gray-800 mx-auto  " aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="m5 15 7-7 7 7" />
+                </svg>
+
             </div>
             <div
                 onTouchStart={() => handleTouchDown("down")}
                 onTouchEnd={() => handleTouchUp("down")}
-                className="pointer-events-auto h-10 w-10 cursor-pointer  select-none bg-slate-500"
+                className="pointer-events-auto h-10 w-10 mx-auto  col-start-2 col-end-3 row-start-2 row-end-3   bg-white"
             >
-                down
+                <svg className="w-full h-full text-gray-800 " aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 9-7 7-7-7" />
+                </svg>
+
             </div>
             <div
                 onTouchStart={() => handleTouchDown("left")}
                 onTouchEnd={() => handleTouchUp("left")}
-                className="pointer-events-auto h-10 w-10 cursor-pointer  select-none bg-slate-500"
+                className="pointer-events-auto h-10 w-10 mx-auto  col-start-1 col-end-2 row-start-2 row-end-3   bg-white"
             >
-                left
+                <svg className="w-full h-full text-gray-800 " aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m15 19-7-7 7-7" />
+                </svg>
+
             </div>
             <div
                 onTouchStart={() => handleTouchDown("right")}
                 onTouchEnd={() => handleTouchUp("right")}
-                className="pointer-events-auto h-10 w-10 cursor-pointer  select-none bg-slate-500"
+                className="pointer-events-auto h-10 w-10 mx-auto    bg-white col-start-3 col-end-4 row-start-2 row-end-3"
             >
-                right
+                <svg className="w-full h-full text-gray-800 " aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+                </svg>
+
             </div>
         </div>
     )
