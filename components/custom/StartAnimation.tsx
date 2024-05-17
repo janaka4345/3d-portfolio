@@ -14,7 +14,7 @@ const StartAnimation = () => {
             <m.div
                 initial={{ x: "0" }}
                 animate={{ x: "-100%", transition: { duration: 3 } }}
-                className="absolute inset-0  z-40 flex h-[100svh] w-[100svw] items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500"
+                className="absolute inset-0  z-40 flex h-[100svh] w-[100svw] items-center justify-center bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%"
             ></m.div>
         </LazyMotion>
     )
