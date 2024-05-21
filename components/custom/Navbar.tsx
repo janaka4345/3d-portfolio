@@ -11,6 +11,7 @@ import { useStateEngine, type Page } from "@/store/statEngine"
 import { Button, buttonVariants } from "../ui/button"
 import Email from "./Email"
 import Message from "./Message"
+import Socials from "./Socials"
 
 type MenuItem = {
     name: string
@@ -62,7 +63,6 @@ export const Navbar = () => {
                         "flex items-center space-x-3 rtl:space-x-reverse"
                     )}
                 >
-                    {/* <img src="" className="h-8" alt="Flowbite Logo" /> */}
                     <span className="self-center whitespace-nowrap text-base font-semibold lg:text-2xl ">
                         J
                     </span>
@@ -86,6 +86,7 @@ export const Navbar = () => {
                         <li>
                             <Message />
                         </li>
+                        <Socials />
                     </ul>
                 </div>
                 <div className="block md:hidden">
@@ -123,13 +124,19 @@ export const Navbar = () => {
                                     </SheetClose>
                                 ))}
                             </div>
+                            <SheetClose asChild>
+                                <Socials />
+                            </SheetClose>
                             <SheetFooter className="mt-auto">
+
                                 <SheetClose asChild>
                                     <Email />
                                 </SheetClose>
                                 <SheetClose asChild>
                                     <Message />
                                 </SheetClose>
+
+
                             </SheetFooter>
                         </SheetContent>
                     </Sheet>
