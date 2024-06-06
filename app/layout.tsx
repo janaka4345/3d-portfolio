@@ -11,6 +11,20 @@ export const metadata: Metadata = {
     description:
         "I'm a skilled full stack web developer / designer  with experience in Node, React and Typescript. Explore my portfolio to see my latest projects and contact me for your web development needs.",
     metadataBase: new URL('http://janakakariyawasam.xyz'),
+    openGraph: {
+        images: [
+            {
+                url: 'https://res.cloudinary.com/dqjfskfxu/image/upload/v1717634874/3d-portfolio/bacwjazkaabixmf6v9pr.png',
+            },
+        ],
+    },
+    twitter: {
+        images: [
+            {
+                url: 'https://res.cloudinary.com/dqjfskfxu/image/upload/v1717634874/3d-portfolio/bacwjazkaabixmf6v9pr.png',
+            },
+        ]
+    },
     alternates: {
         canonical: '/',
         languages: {
@@ -18,9 +32,10 @@ export const metadata: Metadata = {
             'de-DE': '/de-DE',
         },
     },
-    openGraph: {
-        images: '/og-image.png',
-    },
+    // openGraph: {
+    //     images: '/og-image.png',
+    // },
+
 }
 
 export default function RootLayout({
