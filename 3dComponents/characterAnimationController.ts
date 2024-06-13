@@ -99,7 +99,7 @@ const characterAnimationController = (state: RootState) => {
     }
 
     if (
-        page === "skills" &&
+        (page === "skills" || page === "projects") &&
         currentState != previousState &&
         currentState === "walk"
     ) {
@@ -114,7 +114,7 @@ const characterAnimationController = (state: RootState) => {
     }
 
     if (
-        page === "skills" &&
+        (page === "skills" || page === "projects") &&
         currentState != previousState &&
         currentState === "idle"
     ) {
