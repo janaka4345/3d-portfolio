@@ -3,10 +3,11 @@ import {
     CameraControls,
     KeyboardControls,
     KeyboardControlsEntry,
+    OrbitControls,
 } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import Experience from "./Experience"
-// import { Perf } from 'r3f-perf'
+import { Perf } from 'r3f-perf'
 import TouchInput from "@/components/custom/TouchInput"
 import { useStateEngine } from "@/store/statEngine"
 import { Physics } from "@react-three/rapier"
@@ -14,6 +15,7 @@ import { Suspense, useEffect, useMemo, useRef } from "react"
 import { isMobile } from "react-device-detect"
 import Lights from "./Lights"
 import { MathUtils } from "three"
+import { Leva } from "leva"
 
 const World = () => {
     // console.log("world renderd")
@@ -50,7 +52,16 @@ const World = () => {
     return (
         // <StrictMode>//TODO
         <>
-            {page != "home" && isMobile && <TouchInput />}
+            <Leva
+            // theme={myTheme} // you can pass a custom theme (see the styling section)
+            // fill // default = false,  true makes the pane fill the parent dom node it's rendered in
+            // flat // default = false,  true removes border radius and shadow
+            // oneLineLabels // default = false, alternative layout for labels, with labels and fields on separate rows
+            // hideTitleBar // default = false, hides the GUI header
+            // collapsed // default = false, when true the GUI is collpased
+            // hidden // default = false, when true the GUI is hidden
+            />
+            {page != "home" && <TouchInput />}
             <KeyboardControls map={map}>
                 <Suspense
                     fallback={
@@ -60,7 +71,7 @@ const World = () => {
                     }
                 >
                     <Canvas
-                        style={{ width: "100svw", height: "100svh" }}
+                        style={{ touchAction: 'none', width: "100svw", height: "100svh" }}
                         camera={{
                             fov: 50,
                             near: 0.1,
@@ -96,11 +107,11 @@ const World = () => {
                             }}
                             enabled={page === "home"}
                         />
-                        {/* <OrbitControls /> */}
 
                         <Physics
-                        //  debug
+                        // debug
                         >
+                            {/* <OrbitControls /> */}
                             {/* <Perf position="top-right" /> */}
                             <Lights />
                             <Experience />
