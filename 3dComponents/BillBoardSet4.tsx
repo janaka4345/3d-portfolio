@@ -100,7 +100,7 @@ export function BillBoardSet4(props: JSX.IntrinsicElements['group']) {
 
     useEffect(() => {
         console.log('hiya');
-        console.log({ geometryRef });
+        // console.log({ geometryRef });
         // console.log({ htmlRef });
 
         // if (geometryRef.current) {
@@ -256,7 +256,7 @@ export function BillBoardSet4(props: JSX.IntrinsicElements['group']) {
 
 
                     <mesh
-                        ref={geometryRef}
+                        // ref={geometryRef}
                         name="billboard002"
                         castShadow
                         receiveShadow
