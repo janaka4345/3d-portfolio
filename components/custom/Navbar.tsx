@@ -47,6 +47,10 @@ export const Navbar = () => {
                 setState("walk")
                 setPrevState("idle")
                 break
+            case "projects":
+                setState("walk")
+                setPrevState("idle")
+                break
 
             default:
                 break

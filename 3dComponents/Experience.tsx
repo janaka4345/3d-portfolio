@@ -8,6 +8,7 @@ import {
 import { useEffect, useRef } from "react"
 import {
     BufferGeometry,
+    Euler,
     Material,
     NormalBufferAttributes,
     Object3DEventMap,
@@ -19,12 +20,19 @@ import Plane from "./Plane"
 import { useCharacterAction } from "@/store/characterActionStore"
 import { Preload, useKeyboardControls } from "@react-three/drei"
 import { isMobile } from "react-device-detect"
+import BillBoard from "./BillBoard"
 import Map from "./Map"
 import PlayerAvatar from "./PlayerAvatar2"
 import characterAnimationController from "./characterAnimationController"
 import characterController from "./characterController"
+import { BillboardSet } from "./BillboardSet"
+import { BillboardSet2 } from "./BillboardSet2"
+import { BillboardSet3 } from "./BillboardSet3"
+import { BillBoardSet4 } from "./BillBoardSet4"
+import { BillBoardSet5 } from "./BillBoardSet5"
 const Experience = () => {
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
+    const billboardRef = useRef<RapierRigidBody>(null)
     const playerMeshRef =
         useRef<
             Mesh<
@@ -49,6 +57,10 @@ const Experience = () => {
             new Vector3(0.4, 0, 1),
             true
         )
+        // console.log(page, characterRigidbodyRef.current?.translation());
+        // console.log(billboardRef);
+
+        // console.log(page, playerMeshRef.current);
 
         return () => { }
     }, [page])
@@ -93,34 +105,22 @@ const Experience = () => {
 
             // state.camera.position.copy(new Vector3(characterRigidbodyRef.current?.translation().x - 2, characterRigidbodyRef.current?.translation().y + 1, characterRigidbodyRef.current?.translation().z + 2))
         }
-        if (page === "projects") {
+        if (page === "projects" && characterRigidbodyRef.current) {
             characterRigidbodyRef.current?.setEnabled(true)
-            characterController({
-                state,
-                delta,
-                characterRigidbodyRef,
-                //@ts-ignore
-                playerMeshRef,
-            }) //TODO typescript rrors
+            if (playerMeshRef.current) {
+                characterController({
+                    state,
+                    delta,
+                    characterRigidbodyRef,
+                    //@ts-ignore
+                    playerMeshRef,
+                }) //TODO typescript rrors
+            }
+
         }
     })
     return (
         <>
-            {page === "skills" && (
-                <RigidBody
-                    type="fixed"
-                    position={[-12, -5, 33]}
-                    rotation={[0, Math.PI * 0.85, 0]}
-                >
-                    <Map />
-                </RigidBody>
-            )}
-            {page === "projects" && (
-                <RigidBody type="fixed" position={[0, -5, 0]}>
-                    <Plane />
-                </RigidBody>
-            )}
-
             <RigidBody
                 type="dynamic"
                 ref={characterRigidbodyRef}
@@ -134,6 +134,27 @@ const Experience = () => {
                 />
                 <CapsuleCollider args={[0.5, 0.5]} />
             </RigidBody>
+            {page === "skills" && (
+                <RigidBody
+                    type="fixed"
+                    position={[-12, -5, 33]}
+                    rotation={[0, Math.PI * 0.85, 0]}
+                >
+                    <Map />
+                </RigidBody>
+            )}
+            {page === "projects" && (
+                <>
+                    <RigidBody type="fixed" position={[0, -5, 0]}>
+                        <Plane />
+                    </RigidBody>
+                    {/* <BillBoardSet4 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} scale={7} /> */}
+                    <BillBoardSet5 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+
+                </>
+
+            )}
+
             <Preload all />
         </>
     )
