@@ -52,7 +52,7 @@ const World = () => {
     return (
         // <StrictMode>//TODO
         <>
-            <Leva
+            {/* <Leva */}
             // theme={myTheme} // you can pass a custom theme (see the styling section)
             // fill // default = false,  true makes the pane fill the parent dom node it's rendered in
             // flat // default = false,  true removes border radius and shadow
@@ -60,7 +60,7 @@ const World = () => {
             // hideTitleBar // default = false, hides the GUI header
             // collapsed // default = false, when true the GUI is collpased
             // hidden // default = false, when true the GUI is hidden
-            />
+            {/* /> */}
             {page != "home" && <TouchInput />}
             <KeyboardControls map={map}>
                 <Suspense
@@ -112,7 +112,7 @@ const World = () => {
                         // debug
                         >
                             {/* <OrbitControls /> */}
-                            <Perf position="top-right" />
+                            {/* <Perf position="top-right" /> */}
                             <Lights />
                             <Experience />
                         </Physics>

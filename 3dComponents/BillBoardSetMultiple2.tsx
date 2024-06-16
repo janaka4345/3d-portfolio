@@ -258,7 +258,7 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -Math.PI / 2, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
                                 <iframe style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
                             </Suspense>
                         </Html>
@@ -286,7 +286,7 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -1.5, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
                                 <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} /></Suspense>
 
 
@@ -373,8 +373,8 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -Math.PI / 2, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
-                                <iframe sandbox='allow-scripts' style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
+                                <iframe style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
                             </Suspense>
 
 
@@ -402,7 +402,7 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -1.5, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
                                 <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} /></Suspense>
 
 
@@ -493,8 +493,8 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -Math.PI / 2, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
-                                <iframe sandbox='allow-scripts' style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
+                                <iframe style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
                             </Suspense>
                         </Html>
                     </mesh>
@@ -520,7 +520,7 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -1.5, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
                                 <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} />
                             </Suspense>
 
@@ -613,8 +613,8 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -Math.PI / 2, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
-                                <iframe sandbox='allow-scripts' style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
+                                <iframe style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
                             </Suspense>
                         </Html>
                     </mesh>
@@ -639,7 +639,7 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -1.5, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
                                 <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} />
                             </Suspense>
 
@@ -730,8 +730,8 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -Math.PI / 2, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
-                                <iframe sandbox='allow-scripts' style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
+                                <iframe style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
                             </Suspense>
                         </Html>
                     </mesh>
@@ -757,7 +757,7 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -1.5, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
                                 <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} />
                             </Suspense>
 
@@ -844,8 +844,8 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -Math.PI / 2, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
-                                <iframe sandbox='allow-scripts' style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
+                                <iframe style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" />
                             </Suspense>
                         </Html>
                     </mesh>
@@ -871,7 +871,7 @@ export function BillBoardSetMultiple2(props: JSX.IntrinsicElements['group']) {
                             rotation={[0, -1.5, 0]}
                         // occlude
                         >
-                            <Suspense fallback={<h1>loading..</h1>}>
+                            <Suspense fallback={<h1 className='text-2xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
                                 <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} />
                             </Suspense>
 
