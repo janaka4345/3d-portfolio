@@ -20,16 +20,19 @@ import Plane from "./Plane"
 import { useCharacterAction } from "@/store/characterActionStore"
 import { Preload, useKeyboardControls } from "@react-three/drei"
 import { isMobile } from "react-device-detect"
-import BillBoard from "./BillBoard"
+// import BillBoard from "./BillBoard"
 import Map from "./Map"
 import PlayerAvatar from "./PlayerAvatar2"
 import characterAnimationController from "./characterAnimationController"
 import characterController from "./characterController"
-import { BillboardSet } from "./BillboardSet"
-import { BillboardSet2 } from "./BillboardSet2"
-import { BillboardSet3 } from "./BillboardSet3"
-import { BillBoardSet4 } from "./BillBoardSet4"
-import { BillBoardSet5 } from "./BillBoardSet5"
+// import { BillboardSet } from "./BillboardSet"
+// import { BillboardSet2 } from "./BillboardSet2"
+// import { BillboardSet3 } from "./BillboardSet3"
+// import { BillBoardSet4 } from "./BillBoardSet4"
+// import { BillBoardSet5 } from "./BillBoardSet5"
+// import { BillBoardSet6 } from "./BillBoardSet6"
+// import { BillBoardSetMultiple } from "./BillBoardSetMultiple"
+import { BillBoardSetMultiple2 } from "./BillBoardSetMultiple2"
 const Experience = () => {
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     const billboardRef = useRef<RapierRigidBody>(null)
@@ -149,7 +152,9 @@ const Experience = () => {
                         <Plane />
                     </RigidBody>
                     {/* <BillBoardSet4 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} scale={7} /> */}
-                    <BillBoardSet5 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                    {/* <BillBoardSet5 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} /> */}
+                    {/* <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} /> */}
+                    <BillBoardSetMultiple2 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
 
                 </>
 

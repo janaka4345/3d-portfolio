@@ -237,7 +237,20 @@ export function BillBoardSet5(props: JSX.IntrinsicElements['group']) {
                         position={[2.761, 2.848, -1.305]}
                         rotation={[0, 1.571, 0]}
                         scale={[5.627, 5.627, 8.272]}
-                    />
+                    >
+                        <meshStandardMaterial color='red' />
+                        <Html
+                            distanceFactor={0.2}
+                            transform
+                            center
+                            position={[0, 0.08, 0]}
+                            rotation={[0, -Math.PI / 2, 0]}
+
+                        >
+                            <iframe style={{ height: '1080px', width: '1024px' }} src="https://basicdesign-nine.vercel.app/" ></iframe>
+                        </Html>
+                        {/* https://basicdesign-nine.vercel.app/ */}
+                    </mesh>
                     <mesh
                         name="billboard002"
                         // ref={geometryRef}
