@@ -82,11 +82,7 @@ function loadGLTFModels() {
     const glbAnimation3 = useGLTF("./M_Standing_Expressions_013.glb")
     const glbAnimation4 = useGLTF("./idle.glb")
     const glbAnimation5 = useGLTF("./walking2.glb")
-    // const glbAnimation6 = useGLTF('./happy-board.glb')
-    // const glbAnimation7 = useGLTF('./running.glb')
-    // const glbAnimation8 = useGLTF('./flying.glb')
-    // const glbAnimation9 = useGLTF('./swimend.glb')
-    // const glbAnimation10 = useGLTF('./swimming.glb')
+    // const glbAnimation7 = useGLTF('./runnsing.glb')
 
     //add animations to  to animation array
     animationArray.push(glbAnimation1.animations[0])
@@ -95,10 +91,6 @@ function loadGLTFModels() {
     animationArray.push(glbAnimation4.animations[0])
     animationArray.push(glbAnimation5.animations[0])
     // animationArray.push(glbAnimation6.animations[0])
-    // animationArray.push(glbAnimation7.animations[0])
-    // animationArray.push(glbAnimation8.animations[0])
-    // animationArray.push(glbAnimation9.animations[0])
-    // animationArray.push(glbAnimation10.animations[0])
 
     return { animationArray, playerAvatar }
 }

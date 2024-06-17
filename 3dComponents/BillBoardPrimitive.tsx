@@ -3,7 +3,7 @@ import { Html, useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { Mesh, MeshStandardMaterial } from 'three'
 import { RigidBody } from '@react-three/rapier'
-import { type Billboard } from './BillBoardSetMultiple3'
+import { type Billboard } from '@/lib/billBoardData'
 
 type GLTFResult = GLTF & {
     nodes: {
@@ -31,70 +31,8 @@ type GLTFResult = GLTF & {
 }
 
 const BillBoardPrimitive = ({ first, billboards }: { first: string | TrustedHTML, billboards: Billboard[] }) => {
-
     const { nodes, materials } = useGLTF('/billboardSet6.glb') as GLTFResult
 
-    // useEffect(() => {
-    //     console.log('hiya');
-    //     // console.log({ geometryRef });
-    //     // console.log({ htmlRef });
-
-    //     // TO Find the position of the bill board
-
-    //     // if (geometryRef.current) {
-    //     //     const positions = geometryRef?.current?.geometry?.attributes?.position?.array;
-    //     //     let minX, minY, minZ, maxX, maxY, maxZ;
-
-    //     //     for (let i = 0; i < positions.length; i += 3) {
-    //     //         const x = positions[i];
-    //     //         const y = positions[i + 1];
-    //     //         const z = positions[i + 2];
-
-    //     //         if (minX === undefined || x < minX) minX = x;
-    //     //         if (maxX === undefined || x > maxX) maxX = x;
-    //     //         if (minY === undefined || y < minY) minY = y;
-    //     //         if (maxY === undefined || y > maxY) maxY = y;
-    //     //         if (minZ === undefined || z < minZ) minZ = z;
-    //     //         if (maxZ === undefined || z > maxZ) maxZ = z;
-    //     //     }
-
-    //     //     // Calculate properties (e.g., center)
-    //     //     const centerX = (minX + maxX) / 2;
-    //     //     const centerY = (minY + maxY) / 2;
-    //     //     const centerZ = (minZ + maxZ) / 2;
-    //     //     // setposition({ x: centerX, y: centerY, z: centerZ })
-
-    //     //     console.log({ x: centerX, y: centerY, z: centerZ });
-
-
-    //     //     // console.log('Geometry center:', centerX, centerY, centerZ);
-    //     // }
-
-
-    //     const url = 'http://localhost:3000/github-web'; // Replace with the target website
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await fetch(url);
-    //             const html = await response.text();
-
-    //             // const cleanHtml = DOMPurify.sanitize(html);
-    //             // const parser = new DOMParser();
-    //             // const doc = parser.parseFromString(html, 'text/html');
-
-    //             // console.log({ cleanHtml });
-    //             setfirst(html)
-
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    //     fetchData()
-
-
-    //     return () => {
-
-    //     }
-    // }, [])
 
     const handleCollision = (padName: string) => {
         console.log('collisiob with pad :', padName);
