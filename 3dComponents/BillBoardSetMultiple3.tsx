@@ -219,7 +219,7 @@ const billboards: Billboard[] = [{
 
     board002position: new Vector3(15.106, 3.65, -2.477),
     board002Scale: 5.532,//
-    board002Rotation: new Euler(-Math.PI, Math.PI / 4, -Math.PI),//same other ont here
+    board002Rotation: new Euler(0, Math.PI / 4, 0),//same other ont here
 
     iframeUrl: 'https://bruno-simon.com/html/'
 
@@ -231,8 +231,6 @@ export function BillBoardSetMultiple3(props: JSX.IntrinsicElements['group']) {
     // const geometryRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>()
 
     const [first, setfirst] = useState<string | TrustedHTML>("")
-
-    const { nodes, materials } = useGLTF('/billboardSetmultiple.glb') as GLTFResult
 
     useEffect(() => {
         const url = 'http://localhost:3000/github-web'; // Replace with the target website

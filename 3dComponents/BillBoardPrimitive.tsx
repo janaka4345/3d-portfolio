@@ -1,8 +1,8 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { Html, useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
-import { Mesh, MeshStandardMaterial } from 'three'
 import { RigidBody } from '@react-three/rapier'
+import { Suspense } from 'react'
+import { Mesh, MeshStandardMaterial } from 'three'
+import { GLTF } from 'three-stdlib'
 import { type Billboard } from './BillBoardSetMultiple3'
 
 type GLTFResult = GLTF & {
@@ -31,7 +31,7 @@ type GLTFResult = GLTF & {
 }
 
 const BillBoardPrimitive = ({ first, billboards }: { first: string | TrustedHTML, billboards: Billboard[] }) => {
-
+    console.log('primitive ran');
     const { nodes, materials } = useGLTF('/billboardSet6.glb') as GLTFResult
 
     // useEffect(() => {
@@ -185,9 +185,9 @@ const BillBoardPrimitive = ({ first, billboards }: { first: string | TrustedHTML
                                 rotation={[0, -Math.PI / 2, 0]}
                             // occlude
                             >
-                                {/* <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}> */}
-                                <iframe style={{ height: '1140px', width: '1660px' }} src={billboard.iframeUrl} />
-                                {/* </Suspense> */}
+
+                                <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
+                                    <iframe style={{ height: '1140px', width: '1660px' }} src={billboard.iframeUrl} />  </Suspense>
                             </Html>
 
                         </mesh>
@@ -211,10 +211,14 @@ const BillBoardPrimitive = ({ first, billboards }: { first: string | TrustedHTML
                                 distanceFactor={0.2}
                                 position={[0, 0, 0]}
                                 rotation={[0, -1.5, 0]}
+
                             // occlude
                             >
+
                                 <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
-                                    <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} /></Suspense>
+
+                                    <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} />
+                                </Suspense>
 
 
                             </Html>

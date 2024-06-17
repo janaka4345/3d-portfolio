@@ -160,9 +160,9 @@ const Experience = () => {
                         <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
                     </Suspense> */}
                     {/* <BillBoardSetMultiple2 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} /> */}
-                    {/* <Suspense fallback={<h1>loading...</h1>}> */}
-                    <BillBoardSetMultiple3 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    {/* </Suspense> */}
+                    <Suspense >
+                        <BillBoardSetMultiple3 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                    </Suspense>
 
                 </>
 
