@@ -5,7 +5,7 @@ import {
     RigidBody,
     type RapierRigidBody,
 } from "@react-three/rapier"
-import { useEffect, useRef } from "react"
+import { Suspense, useEffect, useRef } from "react"
 import {
     BufferGeometry,
     Euler,
@@ -33,6 +33,9 @@ import characterController from "./characterController"
 // import { BillBoardSet6 } from "./BillBoardSet6"
 // import { BillBoardSetMultiple } from "./BillBoardSetMultiple"
 import { BillBoardSetMultiple2 } from "./BillBoardSetMultiple2"
+import { BillBoardSet6 } from "./BillBoardSet6"
+import { BillBoardSet5 } from "./BillBoardSet5"
+import { BillBoardSetMultiple3 } from "./BillBoardSetMultiple3"
 const Experience = () => {
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     const billboardRef = useRef<RapierRigidBody>(null)
@@ -153,8 +156,13 @@ const Experience = () => {
                     </RigidBody>
                     {/* <BillBoardSet4 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} scale={7} /> */}
                     {/* <BillBoardSet5 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} /> */}
-                    {/* <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} /> */}
-                    <BillBoardSetMultiple2 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                    {/* <Suspense fallback={<h1>loading...</h1>}>
+                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                    </Suspense> */}
+                    {/* <BillBoardSetMultiple2 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} /> */}
+                    {/* <Suspense fallback={<h1>loading...</h1>}> */}
+                    <BillBoardSetMultiple3 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                    {/* </Suspense> */}
 
                 </>
 
