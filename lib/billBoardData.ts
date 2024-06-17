@@ -162,7 +162,7 @@ export const billboards: Billboard[] = [
 
         board002position: new Vector3(15.106, 3.65, -2.477),
         board002Scale: 5.532, //
-        board002Rotation: new Euler(-Math.PI, Math.PI / 4, -Math.PI), //same other ont here
+        board002Rotation: new Euler(0, Math.PI / 4, 0), //same other ont here
 
         iframeUrl: "https://bruno-simon.com/html/",
     },
