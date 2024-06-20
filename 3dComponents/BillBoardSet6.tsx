@@ -37,41 +37,6 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
     const [first, setfirst] = useState<string | TrustedHTML>("")
 
     useEffect(() => {
-        console.log('hiya');
-        // console.log({ geometryRef });
-        // console.log({ htmlRef });
-
-        // TO Find the position of the bill board
-
-        // if (geometryRef.current) {
-        //     const positions = geometryRef?.current?.geometry?.attributes?.position?.array;
-        //     let minX, minY, minZ, maxX, maxY, maxZ;
-
-        //     for (let i = 0; i < positions.length; i += 3) {
-        //         const x = positions[i];
-        //         const y = positions[i + 1];
-        //         const z = positions[i + 2];
-
-        //         if (minX === undefined || x < minX) minX = x;
-        //         if (maxX === undefined || x > maxX) maxX = x;
-        //         if (minY === undefined || y < minY) minY = y;
-        //         if (maxY === undefined || y > maxY) maxY = y;
-        //         if (minZ === undefined || z < minZ) minZ = z;
-        //         if (maxZ === undefined || z > maxZ) maxZ = z;
-        //     }
-
-        //     // Calculate properties (e.g., center)
-        //     const centerX = (minX + maxX) / 2;
-        //     const centerY = (minY + maxY) / 2;
-        //     const centerZ = (minZ + maxZ) / 2;
-        //     // setposition({ x: centerX, y: centerY, z: centerZ })
-
-        //     console.log({ x: centerX, y: centerY, z: centerZ });
-
-
-        //     //     // console.log('Geometry center:', centerX, centerY, centerZ);
-        // }
-
 
         const url = 'http://localhost:3000/github-web'; // Replace with the target website
         const fetchData = async () => {
@@ -91,8 +56,6 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
             }
         }
         fetchData()
-
-
         return () => {
 
         }
@@ -100,62 +63,7 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
 
     const handleCollision = (padName: string) => {
         console.log('collisiob with pad :', padName);
-
     }
-
-    // const geometryRef = useRef<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>, THREE.Material | THREE.Material[], THREE.Object3DEventMap>>()
-
-    // const htmlRef = useRef()
-    // const { px, py, pz, rx, ry, rz, h, w } = useControls({
-    //     px: {
-    //         value: 4,
-    //         min: -10,
-    //         max: 10,
-    //         step: 0.01,
-    //     },
-    //     py: {
-    //         value: 0,
-    //         min: -10,
-    //         max: 10,
-    //         step: 0.01,
-    //     },
-    //     pz: {
-    //         value: 0,
-    //         min: -10,
-    //         max: 10,
-    //         step: 0.01,
-    //     },
-    //     rx: {
-    //         value: 0,
-    //         min: -10,
-    //         max: 10,
-    //         step: 0.01,
-    //     },
-    //     ry: {
-    //         value: -1.5,
-    //         min: -10,
-    //         max: 10,
-    //         step: 0.01,
-    //     },
-    //     rz: {
-    //         value: 0,
-    //         min: -10,
-    //         max: 10,
-    //         step: 0.01,
-    //     },
-    //     w: {
-    //         value: 850,
-    //         min: 600,
-    //         max: 2000,
-    //         step: 10,
-    //     },
-    //     h: {
-    //         value: 1124,
-    //         min: 800,
-    //         max: 2000,
-    //         step: 10,
-    //     }
-    // })
 
     return (
         <group {...props} dispose={null}>
@@ -223,12 +131,10 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
                     scale={[4.904, 4.311, 3.377]}
                 />
                 <mesh
-                    // ref={geometryRef}
                     name="billboard001"
                     castShadow
                     receiveShadow
                     geometry={nodes.billboard001.geometry}
-                    // material={materials.billbordScrren}
                     position={[1.767, 3.375, -1.305]}
                     rotation={[0, 1.571, 0]}
                     scale={[5.627, 5.627, 5.948]}
@@ -253,7 +159,6 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
                     castShadow
                     receiveShadow
                     geometry={nodes.billboard002.geometry}
-                    // material={materials.billbordScrren}
                     position={[-1.89, 3.65, -0.213]}
                     rotation={[-Math.PI, Math.PI / 4, -Math.PI]}
                     scale={5.532}
