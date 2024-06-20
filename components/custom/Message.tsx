@@ -23,7 +23,7 @@ const Message = () => {
                     Leave a Message
                 </Button>
             </DialogTrigger>
-            <DialogContent className=" max-w-[80dvw] sm:max-w-[500px]">
+            <DialogContent className=" max-w-[80dvw] sm:max-w-[500px] z-50">
                 <DialogHeader>
                     <DialogTitle>Leave a Message</DialogTitle>
                     <DialogDescription>

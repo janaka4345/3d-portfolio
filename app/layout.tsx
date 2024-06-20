@@ -48,7 +48,7 @@ export default function RootLayout({
             <body className={poppins.className}>
                 <Navbar />
                 {children}
-                <Toaster position="top-center" expand={false} richColors />
+                <Toaster position="bottom-right" expand={false} richColors />
             </body>
         </html>
     )

@@ -8,20 +8,18 @@ import { useForm } from "react-hook-form"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
+    FormMessage
 } from "@/components/ui/form"
-import { Input } from "../ui/input"
 import { Button } from "../ui/button"
+import { Input } from "../ui/input"
 
-const formSchema = z.object({
-    name: z.string().min(2).max(50),
-    email: z.string().min(2).max(50),
-    message: z.string().min(2).max(100),
-})
+import { formSchema } from "@/lib/formSchema"
+import { toast } from "sonner"
+
+
 
 const MessageForm = () => {
 
@@ -34,9 +32,29 @@ const MessageForm = () => {
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        try {
+            const response = await fetch('/api/contactForm', {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            })
+            const data = await response.json()
+            if (data.success) {
+                toast.success(data.success,)
+                form.reset()
+            }
+            if (data.error) {
+                toast.error(data.error)
+            }
 
-        console.log(values)
+        } catch (error) {
+            console.log(error);
+            if (error) {
+                toast.error('Something Went Wrong')
+            }
+
+        }
     }
     return (
         <Form {...form}>
@@ -80,7 +98,7 @@ const MessageForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Send Message</Button>
+                <Button type="submit" disabled={form.formState.isSubmitting}>Send Message</Button>
             </form>
         </Form>
     )
