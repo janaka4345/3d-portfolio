@@ -73,7 +73,7 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
         // }
 
 
-        const url = 'http://localhost:3000/github-web'; // Replace with the target website
+        const url = '/github-web'; // Replace with the target website
         const fetchData = async () => {
             try {
                 const response = await fetch(url);
