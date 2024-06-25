@@ -23,7 +23,7 @@ import Map from "./Map"
 import PlayerAvatar from "./PlayerAvatar2"
 import characterAnimationController from "./characterAnimationController"
 import characterController from "./characterController"
-import { BillBoardSet6 } from "./BillBoardSet6"
+import { BillBoard } from "./BillBoard"
 const Experience = () => {
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     // const billboardRef = useRef<RapierRigidBody>(null)
@@ -150,19 +150,19 @@ const Experience = () => {
 
                     |
                     {caroasoul === 1 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
                     </Suspense>}
                     {caroasoul === 2 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
                     </Suspense>}
                     {caroasoul === 3 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
                     </Suspense>}
                     {caroasoul === 4 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
                     </Suspense>}
                     {caroasoul === 5 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
+                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
                     </Suspense>}
                     <Html position={[3, -6, 10]}>
                         <button onClick={handleClick}>Clcic</button>

@@ -31,14 +31,14 @@ type GLTFResult = GLTF & {
     }
 }
 
-export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
-    const { nodes, materials } = useGLTF('/billboardSet6.glb') as GLTFResult
+export function BillBoard(props: JSX.IntrinsicElements['group']) {
+    const { nodes, materials } = useGLTF('/billboard.glb') as GLTFResult
 
     const [html, setHtml] = useState<string>("")
 
     useEffect(() => {
 
-        const url = 'http://localhost:3000/github-web'; // Replace with the target website
+        const url = '/github-web'; // Replace with the target website
         const fetchData = async () => {
             try {
                 const response = await fetch(url);
@@ -173,11 +173,11 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
                         center
                         distanceFactor={0.2}
                         position={[0, 0, 0]}
-                        rotation={[0, -1.5, 0]}
+                        rotation={[0, -1.55, 0]}
                     // occlude
                     >
                         <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
-                            <iframe style={{ height: '1300px', width: '850px' }} srcDoc={html} sandbox='allow-same-origin allow-scripts' />
+                            <iframe style={{ height: '1300px', width: '850px' }} srcDoc={html} sandbox='allow-same-origin' />
 
                         </Suspense>
 
@@ -190,4 +190,4 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
     )
 }
 
-useGLTF.preload('/billboardSet6.glb')
+useGLTF.preload('/billboard.glb')
