@@ -271,7 +271,8 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
                     // occlude
                     >
                         <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
-                            <iframe style={{ height: '1300px', width: '850px' }} srcDoc={first} sandbox='allow-same-origin allow-orientation-lock' />
+                            <iframe style={{ height: '1300px', width: '850px' }} srcDoc={first} sandbox='allow-same-origin' />
+
                         </Suspense>
 
 
