@@ -112,7 +112,7 @@ const World = () => {
                         // debug
                         >
                             {/* <OrbitControls /> */}
-                            <Perf position="top-right" />
+                            {/* <Perf position="top-right" /> */}
                             <Lights />
                             <Experience />
                         </Physics>

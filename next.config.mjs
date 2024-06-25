@@ -16,7 +16,9 @@ const nextConfig = {
         return [
             {
                 source: '/github-web',
-                destination: 'https://github.com'
+                destination: 'https://github.com/janaka4345/basicdesign/',
+                basePath: false,
+                locale: false
             }
         ]
     },
