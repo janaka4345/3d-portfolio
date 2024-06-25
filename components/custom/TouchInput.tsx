@@ -57,7 +57,7 @@ const TouchInput = () => {
     }
 
     return (
-        <div className="pointer-events-auto fixed bottom-0 right-0 z-50 grid grid-cols-3 grid-rows-2 gap-4">
+        <div className="pointer-events-auto touch-none fixed bottom-0 right-0 z-50 grid grid-cols-3 grid-rows-2 gap-4">
             <div
                 onTouchStart={() => handleTouchDown("up")}
                 onTouchEnd={() => handleTouchUp("up")}
