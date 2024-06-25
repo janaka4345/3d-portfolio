@@ -34,7 +34,7 @@ type GLTFResult = GLTF & {
 export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
     const { nodes, materials } = useGLTF('/billboardSet6.glb') as GLTFResult
 
-    const [first, setfirst] = useState<string | TrustedHTML>("")
+    const [html, setHtml] = useState<string>("")
 
     useEffect(() => {
 
@@ -49,7 +49,7 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
                 // const doc = parser.parseFromString(html, 'text/html');
 
                 // console.log({ cleanHtml });
-                setfirst(html)
+                setHtml(html)
 
             } catch (error) {
                 console.log(error);
@@ -139,8 +139,9 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
                     rotation={[0, 1.571, 0]}
                     scale={[5.627, 5.627, 5.948]}
                 >
-                    <meshStandardMaterial color='black' />
+                    <meshStandardMaterial color='black' depthTest={false} />
                     <Html
+
                         distanceFactor={0.2}
                         transform
                         center
@@ -176,7 +177,9 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
                     // occlude
                     >
                         <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
-                            <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} /></Suspense>
+                            <iframe style={{ height: '1300px', width: '850px' }} srcDoc={html} sandbox='allow-same-origin allow-scripts' />
+
+                        </Suspense>
 
 
                     </Html>
