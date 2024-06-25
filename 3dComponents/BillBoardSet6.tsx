@@ -34,7 +34,7 @@ type GLTFResult = GLTF & {
 export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
     const { nodes, materials } = useGLTF('/billboardSet6.glb') as GLTFResult
 
-    const [first, setfirst] = useState<string | TrustedHTML>("")
+    const [first, setfirst] = useState<string>("")
 
     useEffect(() => {
         console.log('hiya');
@@ -271,7 +271,8 @@ export function BillBoardSet6(props: JSX.IntrinsicElements['group']) {
                     // occlude
                     >
                         <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
-                            <div style={{ height: '1300px', width: '850px' }} dangerouslySetInnerHTML={{ __html: first }} /></Suspense>
+                            <iframe style={{ height: '1300px', width: '850px' }} srcDoc={first} sandbox='allow-same-origin allow-orientation-lock' />
+                        </Suspense>
 
 
                     </Html>
