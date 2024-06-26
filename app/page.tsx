@@ -8,7 +8,6 @@ import StartAnimation from "@/components/custom/StartAnimation"
 import { Suspense } from "react"
 
 export default function Home() {
-    console.log('project ran');
 
     return (
         <main className="relative h-[100dvh] w-[100svw] overflow-hidden">

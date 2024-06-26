@@ -1,33 +1,30 @@
+import { useCharacterAction } from "@/store/characterActionStore"
 import { useStateEngine } from "@/store/statEngine"
+import { Preload, useKeyboardControls } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import {
     CapsuleCollider,
     RigidBody,
     type RapierRigidBody,
 } from "@react-three/rapier"
-import { Suspense, useEffect, useRef, useState } from "react"
-import {
-    type BufferGeometry,
-    Euler,
-    type Material,
-    type NormalBufferAttributes,
-    type Object3DEventMap,
-    Vector3,
-    type Mesh,
-} from "three"
-import Plane from "./Plane"
-import { useCharacterAction } from "@/store/characterActionStore"
-import { Html, Preload, useKeyboardControls } from "@react-three/drei"
+import { useEffect, useRef, useState } from "react"
 import { isMobile } from "react-device-detect"
+import {
+    Vector3,
+    type BufferGeometry,
+    type Material,
+    type Mesh,
+    type NormalBufferAttributes,
+    type Object3DEventMap
+} from "three"
+import BillboardCarasoul from "./BillboardCarasoul"
 import Map from "./Map"
 import PlayerAvatar from "./PlayerAvatar2"
 import characterAnimationController from "./characterAnimationController"
 import characterController from "./characterController"
-import { BillBoard } from "./BillBoard"
 const Experience = () => {
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     // const billboardRef = useRef<RapierRigidBody>(null)
-    const [caroasoul, setCaroasoul] = useState(1)
     const playerMeshRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null)
     const [_, getKeys] = useKeyboardControls()
 
@@ -38,9 +35,6 @@ const Experience = () => {
 
     // console.log("experience ran")
 
-    const handleClick = () => {
-        setCaroasoul(prev => prev + 1)
-    }
 
     useEffect(() => {
         // console.log("experience use effect ran")
@@ -135,19 +129,7 @@ const Experience = () => {
                     <Map />
                 </RigidBody>
             )}
-            {page === "projects" && (
-                <>
-                    <RigidBody type="fixed" position={[0, -5, 0]}>
-                        <Plane />
-                    </RigidBody>
-                    <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    <Html position={[3, -6, 10]}>
-                        <button onClick={handleClick}>cilck</button>
-                    </Html>
-
-                </>
-
-            )}
+            {page === "projects" && <BillboardCarasoul />}
 
             <Preload all />
         </>
