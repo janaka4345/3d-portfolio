@@ -38,11 +38,15 @@ export function BillBoard(props: JSX.IntrinsicElements['group']) {
 
     useEffect(() => {
 
-        const url = '/github-web'; // Replace with the target website
+        const url = '/github-web';
+        // console.log(url);
+        // Replace with the target website
         const fetchData = async () => {
             try {
                 const response = await fetch(url);
                 const html = await response.text();
+                console.log(typeof html);
+
 
                 // const cleanHtml = DOMPurify.sanitize(html);
                 // const parser = new DOMParser();
@@ -149,8 +153,11 @@ export function BillBoard(props: JSX.IntrinsicElements['group']) {
                         rotation={[0, -Math.PI / 2, 0]}
                     // occlude
                     >
-                        <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
-                            <iframe style={{ height: '1140px', width: '1660px' }} src="https://basicdesign-nine.vercel.app/" />
+                        <Suspense >
+                            <iframe style={{ height: '1140px', width: '1660px', border: 'none' }}
+                                sandbox='allow-scripts allow-same-origin'
+                                loading='lazy'
+                                src="https://basicdesign-nine.vercel.app/" />
                         </Suspense>
                     </Html>
 
@@ -176,8 +183,19 @@ export function BillBoard(props: JSX.IntrinsicElements['group']) {
                         rotation={[0, -1.55, 0]}
                     // occlude
                     >
-                        <Suspense fallback={<h1 className='text-9xl text-white w-fit h-fit mx-auto mt-96'>loading..</h1>}>
-                            <iframe style={{ height: '1300px', width: '850px' }} srcDoc={html} sandbox='allow-same-origin' />
+                        <Suspense >
+                            <iframe style={{ height: '1300px', width: '850px', border: 'none' }}
+                                srcDoc={html}
+                                // referrerPolicy='no-referrer'
+                                // src='http://localhost:3000/github-web'
+
+                                sandbox="allow-same-origin" //TODO fix the error of allow scripts not working
+                                // sandbox='allow-scripts allow-same-origin'
+                                // sandbox=''
+                                loading='lazy'
+                            // allow='scripts'
+                            // sandbox='allow-scripts '
+                            />
 
                         </Suspense>
 

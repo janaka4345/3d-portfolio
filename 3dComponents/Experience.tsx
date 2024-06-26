@@ -28,14 +28,7 @@ const Experience = () => {
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     // const billboardRef = useRef<RapierRigidBody>(null)
     const [caroasoul, setCaroasoul] = useState(1)
-    const playerMeshRef =
-        useRef<
-            Mesh<
-                BufferGeometry<NormalBufferAttributes>,
-                Material | Material[],
-                Object3DEventMap
-            >
-        >(null)
+    const playerMeshRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null)
     const [_, getKeys] = useKeyboardControls()
 
     const page = useStateEngine((state) => state.page)
@@ -147,25 +140,9 @@ const Experience = () => {
                     <RigidBody type="fixed" position={[0, -5, 0]}>
                         <Plane />
                     </RigidBody>
-
-                    |
-                    {caroasoul === 1 && <Suspense >
-                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    {caroasoul === 2 && <Suspense >
-                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    {caroasoul === 3 && <Suspense >
-                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    {caroasoul === 4 && <Suspense >
-                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    {caroasoul === 5 && <Suspense >
-                        <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
+                    <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
                     <Html position={[3, -6, 10]}>
-                        <button onClick={handleClick}>Clcic</button>
+                        <button onClick={handleClick}>cilck</button>
                     </Html>
 
                 </>

@@ -15,8 +15,9 @@ const nextConfig = {
     async rewrites() {
         return [
             {
-                source: '/github-web',
-                destination: 'https://github.com/janaka4345/3d-portfolio'
+                source: 'http://localhost:3000/github-web',
+                destination: 'https://github.com/janaka4345/3d-portfolio',
+                basePath: false
             }
         ]
     },
