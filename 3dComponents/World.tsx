@@ -14,6 +14,7 @@ import { isMobile } from "react-device-detect"
 import { MathUtils } from "three"
 import Experience from "./Experience"
 import Lights from "./Lights"
+import CarouselButtons from "@/components/custom/CarouselButtons"
 
 const World = () => {
 
@@ -50,6 +51,7 @@ const World = () => {
         <>
 
             {page != "home" && <TouchInput />}
+            {page === "projects" && <CarouselButtons />}
             <KeyboardControls map={map}>
                 <Suspense
                     fallback={
