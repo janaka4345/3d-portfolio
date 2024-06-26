@@ -15,10 +15,17 @@ const nextConfig = {
     async rewrites() {
         return [
             {
-                source: 'http://localhost:3000/github-web',
-                destination: 'https://github.com/janaka4345/3d-portfolio',
+                source: '/githubBasicdesign',
+                destination: 'https://github.com/janaka4345/basicdesign',
                 basePath: false
-            }
+            },
+            {
+                source: '/githubPhotosnap',
+                destination: 'https://github.com/janaka4345/photosnap-2',
+                basePath: false
+            },
+
+
         ]
     },
 }
