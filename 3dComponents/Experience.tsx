@@ -23,6 +23,8 @@ import PlayerAvatar from "./PlayerAvatar2"
 import characterAnimationController from "./characterAnimationController"
 import characterController from "./characterController"
 const Experience = () => {
+    console.log('experience ran');
+
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     // const billboardRef = useRef<RapierRigidBody>(null)
     const playerMeshRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null)
