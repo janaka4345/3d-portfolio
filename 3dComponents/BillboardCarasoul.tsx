@@ -1,10 +1,10 @@
 'use client'
-import { RigidBody } from "@react-three/rapier"
 import { useMemo } from "react"
 import { Euler } from "three"
-import { BillBoard } from "./BillBoard"
-import Plane from "./Plane"
+
 import { useCarouselStore } from "@/store/carasoulStore"
+
+import BillBox from "./BillBox"
 function BillboardCarasoul() {
     const carasoul = useCarouselStore((state) => state.carousel)
     console.log(carasoul);
@@ -43,10 +43,8 @@ function BillboardCarasoul() {
 
     return (
         <>
-            <RigidBody type="fixed" position={[0, -5, 0]}>
-                <Plane />
-            </RigidBody>
-            <BillBoard position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} githubUrl={data[carasoul].githubUrl} websiteUrl={data[carasoul].websiteUrl} />
+            <BillBox position={[3, -6, 8]} rotation={new Euler(0, 3.14, 0)}
+                githubUrl={data[carasoul].githubUrl} websiteUrl={data[carasoul].websiteUrl} />
         </>
     )
 }
