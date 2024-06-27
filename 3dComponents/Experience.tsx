@@ -1,53 +1,31 @@
+import { useCharacterAction } from "@/store/characterActionStore"
 import { useStateEngine } from "@/store/statEngine"
+import { Preload, useKeyboardControls } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import {
     CapsuleCollider,
     RigidBody,
     type RapierRigidBody,
 } from "@react-three/rapier"
-import { Suspense, useEffect, useRef, useState } from "react"
-import {
-    BufferGeometry,
-    Euler,
-    Material,
-    NormalBufferAttributes,
-    Object3DEventMap,
-    Vector3,
-    type Mesh,
-} from "three"
-import Plane from "./Plane"
-// import PlayerAvatar from './PlayerAvatar'  //replace it with player2
-import { useCharacterAction } from "@/store/characterActionStore"
-import { Html, Preload, useKeyboardControls } from "@react-three/drei"
+import { useEffect, useRef, useState } from "react"
 import { isMobile } from "react-device-detect"
-// import BillBoard from "./BillBoard"
+import {
+    Vector3,
+    type BufferGeometry,
+    type Material,
+    type Mesh,
+    type NormalBufferAttributes,
+    type Object3DEventMap
+} from "three"
+import BillboardCarasoul from "./BillboardCarasoul"
 import Map from "./Map"
 import PlayerAvatar from "./PlayerAvatar2"
 import characterAnimationController from "./characterAnimationController"
 import characterController from "./characterController"
-// import { BillboardSet } from "./BillboardSet"
-// import { BillboardSet2 } from "./BillboardSet2"
-// import { BillboardSet3 } from "./BillboardSet3"
-// import { BillBoardSet4 } from "./BillBoardSet4"
-// import { BillBoardSet5 } from "./BillBoardSet5"
-// import { BillBoardSet6 } from "./BillBoardSet6"
-// import { BillBoardSetMultiple } from "./BillBoardSetMultiple"
-// import { BillBoardSetMultiple2 } from "./BillBoardSetMultiple2"
-import { BillBoardSet6 } from "./BillBoardSet6"
-// import { BillBoardSet5 } from "./BillBoardSet5"
-// import { BillBoardSetMultiple3 } from "./BillBoardSetMultiple3"
 const Experience = () => {
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
     // const billboardRef = useRef<RapierRigidBody>(null)
-    const [caroasoul, setCaroasoul] = useState(1)
-    const playerMeshRef =
-        useRef<
-            Mesh<
-                BufferGeometry<NormalBufferAttributes>,
-                Material | Material[],
-                Object3DEventMap
-            >
-        >(null)
+    const playerMeshRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null)
     const [_, getKeys] = useKeyboardControls()
 
     const page = useStateEngine((state) => state.page)
@@ -57,9 +35,6 @@ const Experience = () => {
 
     // console.log("experience ran")
 
-    const handleClick = () => {
-        setCaroasoul(prev => prev + 1)
-    }
 
     useEffect(() => {
         // console.log("experience use effect ran")
@@ -154,41 +129,7 @@ const Experience = () => {
                     <Map />
                 </RigidBody>
             )}
-            {page === "projects" && (
-                <>
-                    <RigidBody type="fixed" position={[0, -5, 0]}>
-                        <Plane />
-                    </RigidBody>
-                    {/* <BillBoardSet4 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} scale={7} /> */}
-                    {/* <BillBoardSet5 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} /> */}
-                    |
-                    {caroasoul === 1 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    {caroasoul === 2 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    {caroasoul === 3 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    {caroasoul === 4 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    {caroasoul === 5 && <Suspense >
-                        <BillBoardSet6 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense>}
-                    <Html position={[3, -6, 10]}>
-                        <button onClick={handleClick}>Clcic</button>
-                    </Html>
-
-                    {/* <BillBoardSetMultiple2 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} /> */}
-                    {/* <Suspense >
-                        <BillBoardSetMultiple3 position={[3, -6, 10]} rotation={new Euler(0, 3.14, 0)} />
-                    </Suspense> */}
-
-                </>
-
-            )}
+            {page === "projects" && <BillboardCarasoul />}
 
             <Preload all />
         </>

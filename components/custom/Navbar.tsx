@@ -58,7 +58,7 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="  fixed left-0 top-0 z-30 w-full bg-transparent">
+        <nav className="  fixed left-0 top-0 z-50 w-full bg-transparent">
             <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
                 <Button
                     onClick={() => handleClick("home")}

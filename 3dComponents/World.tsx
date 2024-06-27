@@ -1,24 +1,22 @@
 "use client"
+import TouchInput from "@/components/custom/TouchInput"
+import { useStateEngine } from "@/store/statEngine"
 import {
     CameraControls,
     KeyboardControls,
-    KeyboardControlsEntry,
-    OrbitControls,
+    KeyboardControlsEntry
 } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import Experience from "./Experience"
-import { Perf } from 'r3f-perf'
-import TouchInput from "@/components/custom/TouchInput"
-import { useStateEngine } from "@/store/statEngine"
 import { Physics } from "@react-three/rapier"
+import { Perf } from 'r3f-perf'
 import { Suspense, useEffect, useMemo, useRef } from "react"
 import { isMobile } from "react-device-detect"
-import Lights from "./Lights"
 import { MathUtils } from "three"
-import { Leva } from "leva"
+import Experience from "./Experience"
+import Lights from "./Lights"
+import CarouselButtons from "@/components/custom/CarouselButtons"
 
 const World = () => {
-    // console.log("world renderd")
 
     enum Controls {
         forward = "forward",
@@ -44,7 +42,6 @@ const World = () => {
 
     useEffect(() => {
         cameraControlsRef.current?.reset()
-        // console.log('ran');
 
         return () => { }
     }, [])
@@ -52,16 +49,9 @@ const World = () => {
     return (
         // <StrictMode>//TODO
         <>
-            {/* <Leva */}
-            {/* // theme={myTheme} // you can pass a custom theme (see the styling section)
-            // fill // default = false,  true makes the pane fill the parent dom node it's rendered in
-            // flat // default = false,  true removes border radius and shadow
-            // oneLineLabels // default = false, alternative layout for labels, with labels and fields on separate rows
-            // hideTitleBar // default = false, hides the GUI header
-            // collapsed // default = false, when true the GUI is collpased
-            // hidden // default = false, when true the GUI is hidden */}
-            {/* /> */}
+
             {page != "home" && <TouchInput />}
+            {page === "projects" && <CarouselButtons />}
             <KeyboardControls map={map}>
                 <Suspense
                     fallback={
