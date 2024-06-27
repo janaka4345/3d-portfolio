@@ -45,7 +45,7 @@ export type Data = {
 }
 
 export default function BillBox(props: JSX.IntrinsicElements['group'] & Data) {
-    const { nodes, materials } = useGLTF('/BillBox.glb') as GLTFResult
+    const { nodes, materials } = useGLTF('/billBox.glb') as GLTFResult
 
     const [html, setHtml] = useState<string>("")
     const carouselGithubLoading = useCarouselStore((state) => state.carouselGithubLoading)
@@ -298,4 +298,4 @@ export default function BillBox(props: JSX.IntrinsicElements['group'] & Data) {
     )
 }
 
-useGLTF.preload('/BillBox.glb')
+useGLTF.preload('/billBox.glb')
