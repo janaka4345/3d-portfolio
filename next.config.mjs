@@ -17,12 +17,15 @@ const nextConfig = {
             {
                 source: '/githubBasicdesign',
                 destination: 'https://github.com/janaka4345/basicdesign',
-                basePath: false
+                basePath: false,
+                locale: false
             },
             {
                 source: '/githubPhotosnap',
                 destination: 'https://github.com/janaka4345/photosnap-2',
-                basePath: false
+                basePath: false,
+                locale: false
+
             },
 
 
