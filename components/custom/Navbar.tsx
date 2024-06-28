@@ -58,13 +58,13 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="  fixed left-0 top-0 z-50 w-full bg-transparent">
-            <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+        <nav className="fixed left-0 top-0 z-50 w-full bg-transparent">
+            <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between p-4">
                 <Button
                     onClick={() => handleClick("home")}
                     className={cn(
                         buttonVariants({ variant: "ghost" }),
-                        "flex items-center space-x-3 rtl:space-x-reverse"
+                        "flex items-center space-x-3 "
                     )}
                 >
                     <span className="self-center whitespace-nowrap text-base font-semibold lg:text-2xl ">
@@ -73,15 +73,15 @@ export const Navbar = () => {
                 </Button>
 
                 <div className=" hidden w-auto md:block ">
-                    <ul className="mt-0  flex   flex-row items-center  space-x-4  rounded-lg  p-0 font-medium lg:space-x-8 rtl:space-x-reverse ">
+                    <ul className="mt-0  flex   flex-row items-center  space-x-4  rounded-lg  p-0 font-medium lg:space-x-8  ">
                         {menuItems.map((item) => (
                             <li key={item.triggerName}>
                                 <Button
-                                    variant="none"
+                                    variant="default"
                                     onClick={() =>
                                         handleClick(item.triggerName)
                                     }
-                                    className=" cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 hover:bg-transparent hover:text-blue-700 lg:text-lg "
+                                    className=" cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm text-gray-200  hover:text-blue-700 lg:text-lg "
                                 >
                                     {item.name}
                                 </Button>
