@@ -44,7 +44,7 @@ function BillboardCarasoul() {
     return (
         <>
             <BillBox position={[3, -6, 8]} rotation={new Euler(0, 3.14, 0)}
-                githubUrl={data[carasoul].githubUrl} websiteUrl={data[carasoul].websiteUrl} />
+                githubUrl={data[carasoul].githubUrl} websiteUrl={data[carasoul].websiteUrl} githubRealUrl={data[carasoul].githubRealUrl} />
         </>
     )
 }
