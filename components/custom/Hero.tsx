@@ -22,8 +22,8 @@ const Hero = () => {
                         }}
                         exit={{
                             opacity: 0,
-                            x: "200%",
-                            transition: { duration: 1.5 },
+                            x: "300%",
+                            transition: { duration: 3 },
                         }}
                         className=" pointer-events-none absolute  z-30   mx-auto mt-8 h-[100svh] w-[100svw] bg-transparent  px-8 py-8 lg:mt-16 lg:h-[60svh] lg:w-[60svw] lg:px-16  lg:py-16  "
                     >

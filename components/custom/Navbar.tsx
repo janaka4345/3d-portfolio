@@ -58,13 +58,13 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="fixed left-0 top-0 z-50 w-full bg-transparent">
+        <nav className="fixed  left-0 top-0 z-50 w-full bg-transparent">
             <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between p-4">
                 <Button
                     onClick={() => handleClick("home")}
                     className={cn(
-                        buttonVariants({ variant: "ghost" }),
-                        "flex items-center space-x-3 "
+                        buttonVariants({ variant: "default" }),
+                        "flex items-center space-x-3 focus:left-0  touch-none"
                     )}
                 >
                     <span className="self-center whitespace-nowrap text-base font-semibold lg:text-2xl ">
@@ -81,7 +81,7 @@ export const Navbar = () => {
                                     onClick={() =>
                                         handleClick(item.triggerName)
                                     }
-                                    className=" cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm text-gray-200  hover:text-blue-700 lg:text-lg "
+                                    className="focus:left-0 touch-none cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm lg:text-lg"
                                 >
                                     {item.name}
                                 </Button>
@@ -96,7 +96,7 @@ export const Navbar = () => {
                 <div className="block md:hidden">
                     <Sheet>
                         <SheetTrigger asChild>
-                            <Button variant="none">
+                            <Button className="focus:left-0 touch-none" variant="none">
                                 <svg
                                     className="h-5 w-5"
                                     aria-hidden="true"
@@ -121,7 +121,7 @@ export const Navbar = () => {
                                             onClick={() =>
                                                 handleClick(item.triggerName)
                                             }
-                                            className="text-right"
+                                            className="text-right touch-none focus:left-0"
                                         >
                                             {item.name}
                                         </Button>

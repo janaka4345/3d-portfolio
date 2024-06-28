@@ -21,12 +21,10 @@ const CarouselButtons = () => {
 
     return (
         <>
-            <div>
-                <Button onClick={() => handleClick('dec')} className="z-50 cursor-pointer text-4xl absolute w-fit h-fit left-6 top-1/2" >&lt;</Button>
-            </div>
-            <div>
-                <Button onClick={() => handleClick('inc')} className="z-50 cursor-pointer text-4xl absolute w-fit h-fit right-6 top-1/2" >&gt;</Button>
-            </div>
+            <Button onClick={() => handleClick('dec')} className="touch-none   z-40 cursor-pointer text-4xl absolute w-fit h-fit left-6 top-1/2" >&lt;</Button>
+
+            <Button onClick={() => handleClick('inc')} className="touch-none  z-40 cursor-pointer text-4xl absolute w-fit h-fit right-6 top-1/2" >&gt;</Button>
+
         </>
     )
 }
