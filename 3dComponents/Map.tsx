@@ -2,7 +2,8 @@ import { useAnimations, useGLTF } from "@react-three/drei"
 import { useEffect } from "react"
 
 const Map = () => {
-    const map = useGLTF("./skillCity4new3Final.glb")
+    // const map = useGLTF("./skillCity4new3Final.glb")
+    const map = useGLTF("./dfdf.glb")
     const animation = useAnimations(map.animations, map.scene)
     useEffect(() => {
         // console.log('map', animation);

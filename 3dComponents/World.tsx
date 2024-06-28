@@ -50,8 +50,8 @@ const World = () => {
         // <StrictMode>//TODO
         <>
 
-            {page != "home" && <TouchInput />}
             {page === "projects" && <CarouselButtons />}
+            {page != "home" && <TouchInput />}
             <KeyboardControls map={map}>
                 <Suspense
                     fallback={
