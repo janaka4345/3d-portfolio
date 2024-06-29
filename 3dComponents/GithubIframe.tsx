@@ -9,8 +9,6 @@ function GithubIframe({ githubUrl }: { githubUrl: string }) {
     useEffect(() => {
 
         const url = githubUrl;
-        // console.log(url);
-        // Replace with the target website
         const fetchData = async () => {
             try {
                 const response = await fetch(url);
@@ -47,14 +45,8 @@ function GithubIframe({ githubUrl }: { githubUrl: string }) {
                 srcDoc={html}
                 onLoad={() => setCarouselGithubLoading(false)}
                 // referrerPolicy='no-referrer'
-                // src='http://localhost:3000/github-web'
-
                 sandbox="allow-same-origin" //TODO fix the error of allow scripts not working
-                // sandbox='allow-scripts allow-same-origin'
-                // sandbox=''
                 loading='lazy'
-            // allow='scripts'
-            // sandbox='allow-scripts '
             ></iframe>
         </Html>
     )

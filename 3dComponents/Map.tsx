@@ -3,12 +3,9 @@ import { useEffect } from "react"
 
 const Map = () => {
     // const map = useGLTF("./skillCity4new3Final.glb")
-    const map = useGLTF("./dfdf.glb")
+    const map = useGLTF("./skillCity.glb")
     const animation = useAnimations(map.animations, map.scene)
     useEffect(() => {
-        // console.log('map', animation);
-
-
         if (animation != null) {
             //@ts-ignore
             animation?.actions?.['Animation'].reset().play()
