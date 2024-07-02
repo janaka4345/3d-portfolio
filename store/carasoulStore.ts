@@ -1,6 +1,7 @@
 import { create } from "zustand"
 type State = {
     carousel: number
+    // totalCarousels:number
     carouselGithubLoading: boolean
     carouselWebsiteLoading: boolean
 }
@@ -14,11 +15,12 @@ type Action = {
 
 const useCarouselStore = create<State & Action>((set) => ({
     carousel: 0,
+    // totalCarousels:6,
     carouselGithubLoading: true,
     carouselWebsiteLoading: true,
     setCarouselInc: () =>
         set((state) => {
-            if (state.carousel >= 3) {
+            if (state.carousel >= 5) {
                 return { carousel: 0 }
             }
             return { carousel: state.carousel + 1 }
@@ -26,7 +28,7 @@ const useCarouselStore = create<State & Action>((set) => ({
     setCarouselDec: () =>
         set((state) => {
             if (state.carousel <= 0) {
-                return { carousel: 3 }
+                return { carousel: 5 }
             }
             return { carousel: state.carousel - 1 }
         }),
