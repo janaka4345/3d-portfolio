@@ -1,3 +1,4 @@
+import { fetchGithub } from "@/serverActions/fetchGithub"
 import { useCarouselStore } from "@/store/carasoulStore"
 import { Html } from "@react-three/drei"
 import { useEffect, useState } from "react"
@@ -8,14 +9,13 @@ function GithubIframe({ githubUrl }: { githubUrl: string }) {
 
     useEffect(() => {
 
-        const url = githubUrl;
+        // if (response.)
+
         const fetchData = async () => {
             try {
-                const response = await fetch(url);
-                const html = await response.text();
-                console.log(typeof html);
-                setHtml(html)
-
+                const response = await fetchGithub(githubUrl)
+                console.log(typeof response);
+                setHtml(response)
             } catch (error) {
                 console.log(error);
             }
