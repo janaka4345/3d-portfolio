@@ -1,4 +1,3 @@
-import { fetchGithub } from "@/serverActions/fetchGithub"
 import { useCarouselStore } from "@/store/carasoulStore"
 import { Html } from "@react-three/drei"
 import { useEffect, useState } from "react"
@@ -9,13 +8,13 @@ function GithubIframe({ githubUrl }: { githubUrl: string }) {
 
     useEffect(() => {
 
-        // if (response.)
-
+        const url = githubUrl;
         const fetchData = async () => {
             try {
-                const response = await fetchGithub(githubUrl)
-                console.log(typeof response);
-                setHtml(response)
+                const response = await fetch(url);
+                const html = await response.text();
+                setHtml(html)
+
             } catch (error) {
                 console.log(error);
             }
@@ -45,7 +44,7 @@ function GithubIframe({ githubUrl }: { githubUrl: string }) {
                 srcDoc={html}
                 onLoad={() => setCarouselGithubLoading(false)}
                 // referrerPolicy='no-referrer'
-                sandbox="allow-same-origin" //TODO fix the error of allow scripts not working
+                sandbox="allow-same-origin allow-scripts" //TODO fix the error of allow scripts not working
                 loading='lazy'
             ></iframe>
         </Html>
