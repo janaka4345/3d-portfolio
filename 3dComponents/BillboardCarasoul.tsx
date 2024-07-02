@@ -14,41 +14,35 @@ function BillboardCarasoul() {
         const data = [
             {
                 githubUrl: 'http://165.232.179.119:3000/chatroom',
-                // githubUrl: 'http://localhost:3000/chatroom',
                 githubRealUrl: 'https://github.com/janaka4345/chatroom2',
                 websiteUrl: 'https://chatter.janakakariyawasam.xyz/'
 
             },
             {
                 githubUrl: 'http://165.232.179.119:3000/ai-pal',
-                // githubUrl: 'http://localhost:3000/ai-pal',
                 githubRealUrl: 'https://github.com/janaka4345/ai-pal',
                 websiteUrl: 'https://aipal.janakakariyawasam.xyz/'
 
             },
             {
                 githubUrl: 'http://165.232.179.119:3000/3d-portfolio',
-                // githubUrl: 'http://localhost:3000/3d-portfolio',
                 githubRealUrl: 'https://github.com/janaka4345/3d-portfolio',
-                websiteUrl: 'https://www.janakakariyawasam.xyz/'
+                websiteUrl: 'http://165.232.179.119:3000/'
 
             }, {
                 githubUrl: 'http://165.232.179.119:3000/fassion-ecomm',
-                // githubUrl: 'http://localhost:3000/fassion-ecomm',
                 githubRealUrl: 'https://github.com/janaka4345/fashion-ecommerce',
                 websiteUrl: 'https://fassion-ecommerce.janakakariyawasam.xyz/'
 
             },
             {
                 githubUrl: 'http://165.232.179.119:3000/githubBasicdesign',
-                // githubUrl: 'http://localhost:3000/githubBasicdesign',
                 githubRealUrl: 'https://github.com/janaka4345/basicdesign',
                 websiteUrl: 'https://basicdesign-nine.vercel.app/'
 
             },
             {
                 githubUrl: 'http://165.232.179.119:3000/githubPhotosnap',
-                // githubUrl: 'http://localhost:3000/githubPhotosnap',
                 githubRealUrl: 'https://github.com/janaka4345/photosnap-2',
                 websiteUrl: 'https://photosnap-pearl.vercel.app/'
 
