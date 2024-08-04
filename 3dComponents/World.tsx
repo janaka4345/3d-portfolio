@@ -15,6 +15,7 @@ import { MathUtils } from "three"
 import Experience from "./Experience"
 import Lights from "./Lights"
 import CarouselButtons from "@/components/custom/CarouselButtons"
+import Loading from "@/components/skeletons/Loading"
 
 const World = () => {
 
@@ -55,9 +56,7 @@ const World = () => {
             <KeyboardControls map={map}>
                 <Suspense
                     fallback={
-                        <div className="absolute left-1/2 top-1/2">
-                            loading canvas ...
-                        </div>
+                        <Loading className='w-16 h-16 absolute left-1/2 top-1/2' />
                     }
                 >
                     <Canvas

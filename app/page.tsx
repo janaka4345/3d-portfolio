@@ -2,6 +2,7 @@
 import World from "@/3dComponents/World"
 import Hero from "@/components/custom/Hero"
 import StartAnimation from "@/components/custom/StartAnimation"
+import Loading from "@/components/skeletons/Loading"
 // import { useStateEngine } from "@/store/statEngine";
 // import { AnimatePresence } from "framer-motion";
 
@@ -14,7 +15,7 @@ export default function Home() {
             <StartAnimation />
             <Suspense
                 fallback={
-                    <h1 className="absolute left-1/2 top-1/2">loading...</h1>
+                    <Loading className='w-16 h-16 absolute left-1/2 top-1/2' />
                 }
             >
                 <Hero />
