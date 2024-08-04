@@ -9,8 +9,8 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
-                default:
-                    "bg-primary text-primary-foreground hover:bg-primary/90",
+                defaultOg: "bg-primary text-primary-foreground hover:bg-primary/90 ",
+                default: "text-white bg-gradient-to-r from-primary via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2",
                 destructive:
                     "bg-destructive text-destructive-foreground hover:bg-destructive/90",
                 outline:
@@ -21,7 +21,7 @@ const buttonVariants = cva(
                 link: "text-primary underline-offset-4 hover:underline",
                 customLink:
                     "bg-primary hover:bg-primary focus:ring-primary  pointer-events-auto mr-1 lg:mr-3 inline-flex cursor-pointer items-center justify-center rounded-lg px-3  lg:px-5 py-3 text-center text-base font-medium text-white focus:ring-4",
-                cta: "pointer-events-auto inline-flex cursor-pointer items-center justify-center rounded-lg border border-gray-300 px-3 lg:px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 ",
+                cta: "pointer-events-auto inline-flex cursor-pointer items-center justify-center rounded-lg border-2  border-gray-300 px-3 lg:px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 ",
                 none: "",
             },
 
