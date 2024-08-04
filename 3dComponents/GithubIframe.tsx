@@ -1,3 +1,4 @@
+import BillboardLoading from "@/components/skeletons/BillboardLoading"
 import { useCarouselStore } from "@/store/carasoulStore"
 import { Html } from "@react-three/drei"
 import { useEffect, useState } from "react"
@@ -39,7 +40,11 @@ function GithubIframe({ githubUrl }: { githubUrl: string }) {
             rotation={[0, -1.55, 0]}
         // occlude
         >
-            {carouselGithubLoading && <h1 style={{ height: '500px', width: '850px' }} className='absolute z-50 text-6xl bg-white text-black '>Loading...</h1>}
+            {carouselGithubLoading &&
+                <BillboardLoading style={{ height: '1300px', width: '850px' }} className='absolute flex justify-center items-center' />
+            }
+
+
             <iframe style={{ height: '1300px', width: '850px', border: 'none' }}
                 srcDoc={html}
                 onLoad={() => setCarouselGithubLoading(false)}

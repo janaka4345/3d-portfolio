@@ -1,3 +1,4 @@
+import BillboardLoading from "@/components/skeletons/BillboardLoading"
 import { useCarouselStore } from "@/store/carasoulStore"
 import { Html } from "@react-three/drei"
 
@@ -17,12 +18,8 @@ function WebsiteIframe({ websiteUrl }: { websiteUrl: string }) {
         // occlude
         >
             {carouselWebsiteLoading && (
-                <h1
-                    style={{ height: "500px", width: "1660px" }}
-                    className="absolute z-50 bg-white text-6xl text-black "
-                >
-                    Loading...
-                </h1>
+
+                <BillboardLoading style={{ height: '1140px', width: '1660px' }} className='absolute z-50 flex justify-center items-center' />
             )}
             <iframe
                 style={{
