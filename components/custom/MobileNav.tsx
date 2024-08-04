@@ -12,7 +12,7 @@ import Email from "./Email"
 import Message from "./Message"
 export default function MobileNav({ menuItems, handleClick }: { menuItems: MenuItem[], handleClick: (item: MenuItem["triggerName"]) => void }) {
     return (
-        <div className="block md:hidden">
+        <div className="block lg:hidden">
             <Sheet >
                 <SheetTrigger asChild>
                     <Button className="focus:left-0 touch-none" variant="none">
@@ -39,10 +39,11 @@ export default function MobileNav({ menuItems, handleClick }: { menuItems: MenuI
                         {menuItems.map((item) => (
                             <SheetClose key={item.name} asChild>
                                 <Button
+                                    variant='default'
                                     onClick={() =>
                                         handleClick(item.triggerName)
                                     }
-                                    className="text-right touch-none focus:left-0"
+                                    className="text-right touch-none focus:left-0 "
                                 >
                                     {item.name}
                                 </Button>
@@ -52,7 +53,7 @@ export default function MobileNav({ menuItems, handleClick }: { menuItems: MenuI
                     <SheetClose asChild>
                         <Socials />
                     </SheetClose>
-                    <SheetFooter className="mt-auto">
+                    <SheetFooter className="mt-auto gap-2">
 
                         <SheetClose asChild>
                             <Email />

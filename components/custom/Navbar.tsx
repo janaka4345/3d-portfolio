@@ -73,7 +73,7 @@ export const Navbar = () => {
                     </span>
                 </Button>
 
-                <div className=" hidden w-auto md:block ">
+                <div className=" hidden w-auto lg:block ">
                     <ul className="mt-0  flex   flex-row items-center  space-x-4  rounded-lg  p-0 font-medium lg:space-x-8  ">
                         {menuItems.map((item) => (
                             <li key={item.triggerName}>
@@ -88,13 +88,17 @@ export const Navbar = () => {
                                 </Button>
                             </li>
                         ))}
-                        <li className="flex flex-row">
-                            <Email />
-                            <Message />
-                        </li>
-                        <Socials />
+
                     </ul>
                 </div>
+                <div className="hidden w-auto lg:flex justify-center items-center">
+                    <li className="flex flex-row">
+                        <Email />
+                        <Message />
+                    </li>
+                    <Socials />
+                </div>
+
                 <MobileNav menuItems={menuItems} handleClick={handleClick} />
             </div>
         </nav>
