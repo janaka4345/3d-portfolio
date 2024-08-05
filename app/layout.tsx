@@ -1,10 +1,12 @@
 import { Navbar } from "@/components/custom/Navbar"
 import { Toaster } from "@/components/ui/sonner"
 import type { Metadata } from "next"
-import { Poppins } from "next/font/google"
+import { Poppins } from "@next/font/google"
 import "./globals.css"
+import { cn } from "@/lib/utils"
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "800"] })
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "800"], variable: "--font-sans", })
+
 
 export const metadata: Metadata = {
     title: "Janaka Kariyawasam",
@@ -45,7 +47,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={poppins.className}>
+            <body
+                // className={poppins.className}
+                className={cn(
+                    "min-h-screen bg-background font-sans antialiased",
+                    poppins.variable
+                )}
+            >
                 <Navbar />
                 {children}
                 <Toaster position="bottom-right" expand={false} richColors />
