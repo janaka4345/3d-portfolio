@@ -48,8 +48,8 @@ function GithubIframe({ githubUrl }: { githubUrl: string }) {
             <iframe style={{ height: '1300px', width: '850px', border: 'none' }}
                 srcDoc={html}
                 onLoad={() => setCarouselGithubLoading(false)}
-                // referrerPolicy='no-referrer'
-                sandbox="allow-same-origin allow-scripts" //TODO fix the error of allow scripts not working
+                referrerPolicy='no-referrer'
+                sandbox="allow-same-origin " //TODO fix the error of allow scripts not working
                 loading='lazy'
             ></iframe>
         </Html>
