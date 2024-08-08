@@ -45,7 +45,7 @@ const characterAnimationController = (state: RootState) => {
             characterMove.right) &&
         currentState != "walk"
     ) {
-        console.log("state walk set")
+        // console.log("state walk set")
         setState("walk")
         setPrevState("idle")
     }
@@ -56,7 +56,7 @@ const characterAnimationController = (state: RootState) => {
         !characterMove.right &&
         currentState != "idle"
     ) {
-        console.log("state idle set")
+        // console.log("state idle set")
 
         setState("idle")
         setPrevState("walk")

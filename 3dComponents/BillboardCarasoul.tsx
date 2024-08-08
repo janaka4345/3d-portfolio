@@ -49,7 +49,7 @@ function BillboardCarasoul() {
             }]
         return data
     }, [])
-    console.log(data);
+    // console.log(data);
 
     return (
         <>

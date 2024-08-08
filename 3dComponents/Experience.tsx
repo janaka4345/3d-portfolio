@@ -7,7 +7,7 @@ import {
     RigidBody,
     type RapierRigidBody,
 } from "@react-three/rapier"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { isMobile } from "react-device-detect"
 import {
     Vector3,
@@ -23,19 +23,15 @@ import PlayerAvatar from "./PlayerAvatar2"
 import characterAnimationController from "./characterAnimationController"
 import characterController from "./characterController"
 const Experience = () => {
-    console.log('experience ran');
 
     const characterRigidbodyRef = useRef<RapierRigidBody>(null)
-    // const billboardRef = useRef<RapierRigidBody>(null)
     const playerMeshRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null)
     const [_, getKeys] = useKeyboardControls()
 
     const page = useStateEngine((state) => state.page)
     const setActiveAction = useCharacterAction((state) => state.setAction)
     // const action = useCharacterAction()
-    // console.log("experience  renderd")
 
-    // console.log("experience ran")
 
 
     useEffect(() => {
@@ -45,10 +41,6 @@ const Experience = () => {
             new Vector3(0.4, 0, 1),
             true
         )
-        // console.log(page, characterRigidbodyRef.current?.translation());
-        // console.log(billboardRef);
-
-        // console.log(page, playerMeshRef.current);
 
         return () => { }
     }, [page])
@@ -57,12 +49,10 @@ const Experience = () => {
         //controlle the animation of the character with state changes
         characterAnimationController(state)
 
-        // console.log(animation);
         if (!characterRigidbodyRef.current?.isEnabled() && page === "skills") {
             characterRigidbodyRef.current?.setEnabled(true)
         }
         if (page === "home") {
-            // page === "home" &&
             playerMeshRef.current?.setRotationFromAxisAngle(
                 new Vector3(0, 1, 0),
                 //@ts-ignore
