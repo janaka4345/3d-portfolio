@@ -83,7 +83,7 @@ export const Navbar = () => {
                                         onClick={() =>
                                             handleClick(item.triggerName)
                                         }
-                                        className="focus:left-0 touch-none cursor-pointer rounded border-0 p-0 px-3 py-2 text-sm lg:text-lg"
+                                        className="rounded-lg focus:left-0 touch-none cursor-pointer  border-0 p-0 px-3 py-2 text-sm lg:text-lg"
                                     >
                                         {item.name}
                                     </Button>
