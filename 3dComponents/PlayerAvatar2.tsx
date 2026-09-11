@@ -1,7 +1,7 @@
 // import { useStateEngine } from "@/store/statEngine";
 import { useAnimationStore } from "@/store/animationStore"
 import { useAnimations, useGLTF } from "@react-three/drei"
-import { type MeshProps } from "@react-three/fiber"
+import { type ThreeElements } from "@react-three/fiber"
 
 import { Ref, forwardRef, useEffect, useLayoutEffect } from "react"
 import {
@@ -14,7 +14,7 @@ import {
 } from "three"
 
 const PlayerModel = (
-    props: MeshProps,
+    props: ThreeElements["mesh"],
     playerRef: Ref<
         Mesh<
             BufferGeometry<NormalBufferAttributes>,

@@ -51,7 +51,7 @@ export type Data = {
 }
 
 export default function BillBox(props: ThreeElements['group'] & Data) {
-    const { nodes, materials } = useGLTF('/billBox.glb') as GLTFResult
+    const { nodes, materials } = useGLTF('/billBox.glb') as unknown as GLTFResult
 
     const [open, setOpen] = useState<boolean>(false)
 
