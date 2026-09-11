@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
+    // Next 16.3 + Vercel adapter skips next-server.js.nft.json when standalone is on
+    // (ENOENT in onBuildComplete). Standalone is unused on Vercel anyway.
+    output: process.env.VERCEL ? undefined : 'standalone',
     transpilePackages: ["three"],
     images: {
         remotePatterns: [
