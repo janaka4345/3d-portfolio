@@ -6,6 +6,7 @@ import RedirectOverlay from '@/components/custom/RedirectOverlay'
 import { Html, useGLTF } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
 import { useState } from 'react'
+import type { ThreeElements } from '@react-three/fiber'
 import { Mesh, MeshStandardMaterial } from 'three'
 import { GLTF } from 'three-stdlib'
 import GithubIframe from './GithubIframe'
@@ -49,8 +50,8 @@ export type Data = {
     websiteUrl: string
 }
 
-export default function BillBox(props: JSX.IntrinsicElements['group'] & Data) {
-    const { nodes, materials } = useGLTF('/billBox.glb') as GLTFResult
+export default function BillBox(props: ThreeElements['group'] & Data) {
+    const { nodes, materials } = useGLTF('/billBox.glb') as unknown as GLTFResult
 
     const [open, setOpen] = useState<boolean>(false)
 

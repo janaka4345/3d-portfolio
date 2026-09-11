@@ -1,7 +1,7 @@
 // import { useStateEngine } from "@/store/statEngine";
 import { useAnimationStore } from "@/store/animationStore"
 import { useAnimations, useGLTF } from "@react-three/drei"
-import { type MeshProps } from "@react-three/fiber"
+import { type ThreeElements } from "@react-three/fiber"
 
 import { Ref, forwardRef, useEffect, useLayoutEffect } from "react"
 import {
@@ -13,8 +13,8 @@ import {
     type Object3DEventMap,
 } from "three"
 
-const playerModel = (
-    props: MeshProps,
+const PlayerModel = (
+    props: ThreeElements["mesh"],
     playerRef: Ref<
         Mesh<
             BufferGeometry<NormalBufferAttributes>,
@@ -32,7 +32,7 @@ const playerModel = (
     // // const num = 6
 
     //loading the models and animations
-    const { animationArray, playerAvatar } = loadGLTFModels()
+    const { animationArray, playerAvatar } = useLoadGLTFModels()
 
     //provide the animation array to use animation
     const animation = useAnimations(animationArray, playerAvatar.scene)
@@ -64,12 +64,12 @@ const playerModel = (
     )
 }
 
-const PlayerAvatar = forwardRef(playerModel)
+const PlayerAvatar = forwardRef(PlayerModel)
 export default PlayerAvatar
 // useGLTF.preload(['./characterCompresed.glb', './F_Standing_Idle_Variations_003.glb', './M_Standing_Expressions_001.glb', './M_Standing_Expressions_013.glb', './M_Walk_001.glb',
 //     './M_Jog_003.glb'])
 
-function loadGLTFModels() {
+function useLoadGLTFModels() {
     const animationArray: AnimationClip[] = []
 
     //Character loadedAP

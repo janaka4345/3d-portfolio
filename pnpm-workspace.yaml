@@ -1,0 +1,19 @@
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+
+publicHoistPattern:
+  - "*three*"
+  - "*@react-three*"
+  - "*three-*"
+  - "react"
+  - "react-dom"
+  - "scheduler"
+
+peerDependencyRules:
+  allowedVersions:
+    react: "19"
+    react-dom: "19"
+  allowAny:
+    - react
+    - react-dom

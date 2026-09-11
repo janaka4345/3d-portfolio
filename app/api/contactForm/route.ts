@@ -2,7 +2,7 @@ import { formSchema } from "@/lib/formSchema"
 import { transporter } from "@/lib/nodemailer"
 import { NextRequest, NextResponse } from "next/server"
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
     const data = await req.json()
     const validatedData = formSchema.safeParse(data)
 
