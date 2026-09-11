@@ -13,7 +13,7 @@ import {
     type Object3DEventMap,
 } from "three"
 
-const playerModel = (
+const PlayerModel = (
     props: MeshProps,
     playerRef: Ref<
         Mesh<
@@ -32,7 +32,7 @@ const playerModel = (
     // // const num = 6
 
     //loading the models and animations
-    const { animationArray, playerAvatar } = loadGLTFModels()
+    const { animationArray, playerAvatar } = useLoadGLTFModels()
 
     //provide the animation array to use animation
     const animation = useAnimations(animationArray, playerAvatar.scene)
@@ -64,12 +64,12 @@ const playerModel = (
     )
 }
 
-const PlayerAvatar = forwardRef(playerModel)
+const PlayerAvatar = forwardRef(PlayerModel)
 export default PlayerAvatar
 // useGLTF.preload(['./characterCompresed.glb', './F_Standing_Idle_Variations_003.glb', './M_Standing_Expressions_001.glb', './M_Standing_Expressions_013.glb', './M_Walk_001.glb',
 //     './M_Jog_003.glb'])
 
-function loadGLTFModels() {
+function useLoadGLTFModels() {
     const animationArray: AnimationClip[] = []
 
     //Character loadedAP

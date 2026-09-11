@@ -6,7 +6,7 @@ import { AnimationAction, Camera, Mesh, Quaternion, Vector3 } from "three"
 
 let playerMesh: MutableRefObject<Mesh>
 let characterRigidbody:
-    | RefObject<RapierRigidBody>
+    | RefObject<RapierRigidBody | null>
     | MutableRefObject<RapierRigidBody>
 // console.log("character controller ran")
 
@@ -139,7 +139,7 @@ export default function characterController({
     state: RootState
     delta: number
     characterRigidbodyRef:
-        | RefObject<RapierRigidBody>
+        | RefObject<RapierRigidBody | null>
         | MutableRefObject<RapierRigidBody>
     playerMeshRef: MutableRefObject<Mesh>
 }) {
